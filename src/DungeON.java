@@ -221,7 +221,7 @@ public class DungeON {
 
         mostrarInicioCombate(pj1);
     
-        int sala = 1;
+        int sala = 6;
         boolean jugadorDerrotado = false;
 
         if (pj1 instanceof Picaro) {
@@ -274,6 +274,9 @@ public class DungeON {
                     sala++;
                 }
             }
+            // Mostrar estadísticas al final, gane o pierda
+            partida.finalizarPartida();
+            partida.mostrarEstadisticas(pj1);
         }
     }
     
@@ -512,15 +515,15 @@ public class DungeON {
         if (pj1.getSalud() <= 0) {
             MensajeDerrota.mostrarDerrotaFinal();
         } else {
-            System.out.println(BY + "\n¡Has vencido al jefe final y restaurado la realidad!" + GREEN);
+            reproductor.reproducirMusica("/Resources/musicaVictoria.wav");
+            System.out.println(BY + "\n¡HAS VENCIDO AL JEFE FINAL!" + RESET);
+            System.out.println(GREEN + "La oscuridad ha sido derrotada, y la luz vuelve a brillar sobre el reino...");
+            System.out.println(BOLD + BY + "\n¡Eres una leyenda, campeón de DungeON!" + RESET);
             partida.aumentarSalas();
             partida.aumentarEnemigosDerrotados();
-            partida.finalizarPartida();
-            partida.mostrarEstadisticas(pj1);
         }
     }
     
-
     /**
      * Pregunta al jugador si desea continuar jugando después de un combate.
      * 
@@ -529,7 +532,7 @@ public class DungeON {
      */
     public static boolean preguntarContinuar() throws IOException {
 
-        System.out.println("¿Quieres seguir jugando? 1. Sí / Otra tecla. No");
+        System.out.println("¿Quieres seguir jugando? 1. Sí / Otro número. No");
         return Utils.leerNumero() == 1;
     }
 

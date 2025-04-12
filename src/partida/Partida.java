@@ -5,14 +5,12 @@ import java.time.Duration;
 import java.time.format.DateTimeFormatter;
 
 import personajes.Personaje;
+import static ansi.Ansi.*;
 
 /**
  * Clase para almacenar las estadísticas de una partida.
  */
 public class Partida {
-
-    private static final String ANSI_GREEN = "\033[38;2;0;255;85m";
-    private static final String ANSI_LG = "\u001B[36m";
 
     private int enemigosDerrotados;
     private int dañoTotalInfligido;
@@ -58,25 +56,30 @@ public class Partida {
     public void mostrarEstadisticas(Personaje pj1) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 
-        System.out.println(ANSI_GREEN + "\n═══════════════════════════");
+        System.out.println(GREEN + "\n═══════════════════════════");
         System.out.println("   RESUMEN DE LA PARTIDA");
         System.out.println("═══════════════════════════");
-        System.out.println("Fecha y hora de inicio: " + ANSI_LG + fechaInicio.format(formatter) + ANSI_GREEN);
-        System.out.println("Fecha y hora de fin: " + ANSI_LG + (horaFin != null ? horaFin.format(formatter) : "Partida en curso") + ANSI_GREEN);
-        System.out.println("Última sala alcanzada: " +  ANSI_LG + this.ultimaSala);
+        System.out.println("Fecha y hora de inicio: " + AZUL + fechaInicio.format(formatter) + GREEN);
+        System.out.println("Fecha y hora de fin: " + AZUL + (horaFin != null ? horaFin.format(formatter) : "Partida en curso") + GREEN);
+        System.out.println("Última sala alcanzada: " +  AZUL + this.ultimaSala);
         
+        getDuracionPartida();
+        
+        System.out.println("Clase del personaje: " + AZUL + pj1.getNombre() + GREEN);
+        System.out.println("Enemigos derrotados: " + AZUL + enemigosDerrotados + GREEN);
+        System.out.println("Daño total infligido: " + AZUL + dañoTotalInfligido + GREEN);
+        System.out.println("Daño total recibido: " + AZUL + dañoRecibido + GREEN);
+        System.out.println("Habilidades usadas: " + AZUL + habilidadesUsadas + GREEN);
+        System.out.println("═══════════════════════════\n");
+    }
+
+    public void getDuracionPartida() {
         if (horaFin != null) {
             Duration duracion = Duration.between(fechaInicio, horaFin);
             long minutos = duracion.toMinutes();
             long segundos = duracion.getSeconds() % 60;
-            System.out.println("Tiempo total jugado: " + ANSI_LG + minutos + " minutos y " + segundos + " segundos" + ANSI_GREEN);
+            System.out.println(GREEN + "Tiempo total jugado: " + AZUL + minutos + GREEN + " minutos y " + AZUL + segundos + GREEN + " segundos");
         }
 
-        System.out.println("Clase del personaje: " + ANSI_LG + pj1.getNombre() + ANSI_GREEN);
-        System.out.println("Enemigos derrotados: " + ANSI_LG + enemigosDerrotados + ANSI_GREEN);
-        System.out.println("Daño total infligido: " + ANSI_LG + dañoTotalInfligido + ANSI_GREEN);
-        System.out.println("Daño total recibido: " + ANSI_LG + dañoRecibido + ANSI_GREEN);
-        System.out.println("Habilidades usadas: " + ANSI_LG + habilidadesUsadas + ANSI_GREEN);
-        System.out.println("═══════════════════════════\n");
     }
 }
