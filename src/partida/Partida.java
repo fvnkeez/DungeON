@@ -181,7 +181,4 @@ public class Partida {
             System.out.println("Error al leer el historial de partidas.");
         }
     }
-    
-
-
 }
