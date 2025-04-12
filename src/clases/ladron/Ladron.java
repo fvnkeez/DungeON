@@ -67,11 +67,5 @@ public class Ladron extends Personaje {
             return false;
         }
     }
-
-    @Override
-    public void mostrarEstado() {
-        super.mostrarEstado();
-        System.out.println("║ Usos: " + AZUL + getUsos() + "/" + 3 + GREEN);
-    }
 }
 

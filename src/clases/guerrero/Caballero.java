@@ -61,10 +61,9 @@ public class Caballero extends Guerrero {
         }
     }
 
-    @Override
-    public void mostrarEstado() {
-        super.mostrarEstado();
-        System.out.println("║ Escudo: " + AZUL + escudo + GREEN);
-    }
+    
 
+    public int getEscudo() {
+        return escudo;
+    }
 }

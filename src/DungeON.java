@@ -221,7 +221,7 @@ public class DungeON {
 
         mostrarInicioCombate(pj1);
     
-        int sala = 6;
+        int sala = 1;
         boolean jugadorDerrotado = false;
 
         if (pj1 instanceof Picaro) {
@@ -414,6 +414,7 @@ public class DungeON {
                 
                         if (usado) {
                             pj1.getInventario().eliminarObjeto(opcion - 1);
+                            partida.aumentarObjetosUsados();
                         } else {
                             System.out.println(GREEN + "El objeto no se ha consumido." + GREEN);
                         }

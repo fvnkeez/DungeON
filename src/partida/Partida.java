@@ -16,6 +16,7 @@ public class Partida {
     private int dañoTotalInfligido;
     private int dañoRecibido;
     private int habilidadesUsadas;  
+    private int objetosUsados;  
     private int ultimaSala;
     private LocalDateTime fechaInicio;
     private LocalDateTime horaFin;
@@ -25,6 +26,7 @@ public class Partida {
         this.dañoTotalInfligido = 0;
         this.dañoRecibido = 0;
         this.habilidadesUsadas = 0;
+        this.objetosUsados = 0;
         this.ultimaSala = 1;
         this.fechaInicio = LocalDateTime.now(); // Guarda la fecha y hora al inicio
     }
@@ -48,6 +50,10 @@ public class Partida {
     public void aumentarHabilidadesUsadas() {
         this.habilidadesUsadas++;
     }
+
+    public void aumentarObjetosUsados() {
+        this.objetosUsados++;
+    }
     
     public void aumentarSalas() {
         this.ultimaSala++;
@@ -64,12 +70,13 @@ public class Partida {
         System.out.println("Última sala alcanzada: " +  AZUL + this.ultimaSala);
         
         getDuracionPartida();
-        
+
         System.out.println("Clase del personaje: " + AZUL + pj1.getNombre() + GREEN);
         System.out.println("Enemigos derrotados: " + AZUL + enemigosDerrotados + GREEN);
         System.out.println("Daño total infligido: " + AZUL + dañoTotalInfligido + GREEN);
         System.out.println("Daño total recibido: " + AZUL + dañoRecibido + GREEN);
         System.out.println("Habilidades usadas: " + AZUL + habilidadesUsadas + GREEN);
+        System.out.println("Objetos usados: " + AZUL + objetosUsados + GREEN);
         System.out.println("═══════════════════════════\n");
     }
 

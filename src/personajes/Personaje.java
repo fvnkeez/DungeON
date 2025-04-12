@@ -142,7 +142,44 @@ public abstract class Personaje extends Entidad {
         System.out.println(GREEN + "\n╔═════════════════ ESTADO DEL PERSONAJE ═════════════════");
         System.out.println("║ Salud: " + AZUL + getSalud() + "/" + getSaludMaxima() + GREEN);
         System.out.println("║ EXP: " + AZUL + getExp() + "/" + getExpMaxima() + GREEN);
+    
+        if (this instanceof clases.mago.Mago) {
+            clases.mago.Mago mago = (clases.mago.Mago) this;
+    
+            if (this instanceof clases.mago.Hechicero) {
+                System.out.println("║ Maná: " + AZUL + "∞" + GREEN + " - Usos: ILIMITADOS");
+            } else {
+                System.out.println("║ Maná: " + AZUL + mago.getMana() + "/" + mago.getManaMaximo() + GREEN + " - Coste habilidad: 5 de maná");
+            }
+        }
+    
+        if (this instanceof clases.guerrero.Guerrero) {
+            clases.guerrero.Guerrero g = (clases.guerrero.Guerrero) this;
+            System.out.println("║ Usos habilidad: " + AZUL + g.getUsos() + "/" + g.getUsosMaximos() + GREEN);
+        }
+    
+        if (this instanceof clases.ladron.Ladron) {
+            clases.ladron.Ladron l = (clases.ladron.Ladron) this;
+            System.out.println("║ Usos habilidad: " + AZUL + l.getUsos() + GREEN);
+        }
+    
+        if (this instanceof clases.guerrero.Barbaro) {
+            clases.guerrero.Barbaro b = (clases.guerrero.Barbaro) this;
+            System.out.println("║ Furia acumulada: " + AZUL + b.getFuria() + GREEN);
+        }
+    
+        if (this instanceof clases.guerrero.Caballero) {
+            clases.guerrero.Caballero c = (clases.guerrero.Caballero) this;
+            System.out.println("║ Escudo acumulado: " + AZUL + c.getEscudo() + GREEN);
+        }
+    
+        if (isEscudoActivo()) {
+            System.out.println("║ Escudo temporal: " + AZUL + "ACTIVO" + GREEN);
+        }
+    
+        System.out.println("╚════════════════════════════════════════════════════════");
     }
+    
 
     public boolean isEscudoActivo() { 
         return escudoActivo;

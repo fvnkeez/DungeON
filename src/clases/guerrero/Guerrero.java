@@ -99,11 +99,5 @@ public class Guerrero extends Personaje{
         this.usos = Math.min(this.usos + 1, 3); // Restaura hasta un máximo de 3 usos
         System.out.println("Se ha restaurado 1 uso de tu habilidad especial");
     }
-
-    @Override
-    public void mostrarEstado() {
-        super.mostrarEstado();
-        System.out.println("║ Usos: " + AZUL + getUsos() + "/" + getUsosMaximos() + GREEN);
-    }
 }
 

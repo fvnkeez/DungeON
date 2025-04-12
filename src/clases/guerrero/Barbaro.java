@@ -51,10 +51,8 @@ public class Barbaro extends Guerrero {
         }
     }
 
-    @Override
-    public void mostrarEstado() {
-        super.mostrarEstado();
-        System.out.println("║ Furia: " + AZUL + furia + GREEN);
+    public int getFuria() {
+        return furia;
     }
 
 }
