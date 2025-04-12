@@ -100,9 +100,13 @@ public class Utils {
         return numeroDevolver;
     }
 
-    
-
-  
-
-
+    public static String leerCadena(String mensaje) {
+        System.out.print(mensaje);
+        try {
+            return buffer.readLine().trim();
+        } catch (IOException e) {
+            System.out.println("Error al leer la entrada.");
+            return "";
+        }
+    }
 }

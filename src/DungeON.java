@@ -1,6 +1,7 @@
 import static ansi.Ansi.*;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Random;
 
 import clases.guerrero.*;
@@ -26,6 +27,8 @@ public class DungeON {
      */
     private static Partida partida;
     private static ReproductorMusica reproductor = new ReproductorMusica();
+    private static ArrayList<Partida> historialPartidas = new ArrayList<>();
+
 
     /**
      * Muestra el menú principal del juego y maneja las opciones seleccionadas por el usuario.
@@ -57,6 +60,9 @@ public class DungeON {
                         Creditos.mostrarCreditos();
                         break;
                     case 4:
+                        Partida.mostrarHistorialDesdeFichero();
+                        break;
+                    case 5:
                         System.out.println(RED + "\nSaliendo del juego...\n" + GREEN);
                         System.exit(0);
                     default:
@@ -80,7 +86,8 @@ public class DungeON {
         System.out.println("║ 1) JUGAR                                       ║");
         System.out.println("║ 2) INSTRUCCIONES                               ║");
         System.out.println("║ 3) CRÉDITOS                                    ║");
-        System.out.println("║ 4) SALIR                                       ║");
+        System.out.println("║ 4) MOSTRAR HISTORIAL PARTIDAS                  ║");
+        System.out.println("║ 5) SALIR                                       ║");
         System.out.println("╚════════════════════════════════════════════════╝");
     }
 
@@ -98,14 +105,17 @@ public class DungeON {
         do {
 
             Personaje pj1 = menuClase();
+            String nombreJugador = Utils.leerCadena("Introduce tu nombre o apodo:");
+            partida.setNombreJugador(nombreJugador);
+            partida.setPersonaje(pj1);
             iniciarCombate(pj1, partida);
             partida.finalizarPartida(); // Registrar la hora de finalización de la partida
-            partida.mostrarEstadisticas(pj1);
+            partida.guardarEnFichero();
+            partida.mostrarEstadisticas();
+            historialPartidas.add(partida); // Guardar la partida en el historial
             salirJuego = !preguntarContinuar();
 
         } while (!salirJuego);
-
-
 
         System.out.println(RED + "Saliendo del juego..." + GREEN);
     }
@@ -228,7 +238,6 @@ public class DungeON {
             ((Picaro) pj1).reiniciarHabilidad();
         }
         
-    
         while (!jugadorDerrotado) {
 
             if (sala == 6) {
@@ -274,9 +283,6 @@ public class DungeON {
                     sala++;
                 }
             }
-            // Mostrar estadísticas al final, gane o pierda
-            partida.finalizarPartida();
-            partida.mostrarEstadisticas(pj1);
         }
     }
     
@@ -520,7 +526,6 @@ public class DungeON {
             System.out.println(BY + "\n¡HAS VENCIDO AL JEFE FINAL!" + RESET);
             System.out.println(GREEN + "La oscuridad ha sido derrotada, y la luz vuelve a brillar sobre el reino...");
             System.out.println(BOLD + BY + "\n¡Eres una leyenda, campeón de DungeON!" + RESET);
-            partida.aumentarSalas();
             partida.aumentarEnemigosDerrotados();
         }
     }
