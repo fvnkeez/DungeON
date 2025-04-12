@@ -120,7 +120,7 @@ public class DungeON {
     public static Personaje menuClase() throws IOException {
 
         final int SALUD_GUERRERO = 200, SALUD_MAGO = 150, SALUD_LADRON = 175;
-        int dañoBaseEspadaBronce = 7, dañoBaseVaritaMadera = 9, dañoBaseDagasHierro = 8;
+        int dañoGuerrero = 7, dañoMago = 9, dañoLadron = 8;
         boolean salidaClase = false;
         Personaje pj1 = null;
 
@@ -150,40 +150,44 @@ public class DungeON {
 
             switch (claseJugador) {
                 case 1:
-                    pj1 = new Guerrero( "GUERRERO",SALUD_GUERRERO, dañoBaseEspadaBronce,1, 0, 10, 3, 3);
+                    pj1 = new Guerrero( "GUERRERO",SALUD_GUERRERO, dañoGuerrero,1, 0, 10, 3, 3);
                     salidaClase = true;
                     break;
                 case 2:
-                    pj1 = new Ladron( "LADRÓN", SALUD_LADRON, dañoBaseDagasHierro,1, 0, 10, 3);
+                    pj1 = new Ladron( "LADRÓN", SALUD_LADRON, dañoLadron,1, 0, 10, 3);
                     salidaClase = true;
                     break;  
                 case 3:
-                    pj1 = new Mago("MAGO", SALUD_MAGO, dañoBaseVaritaMadera, 20, 50, 1, 0, 10);
+                    pj1 = new Mago("MAGO", SALUD_MAGO, dañoMago, 20, 50, 1, 0, 10);
                     salidaClase = true;
+                    pj1.getInventario().agregarObjeto(new ElixirMana(10), false);
+
                     break;
                 case 4:
-                    pj1 = new Caballero("CABALLERO", SALUD_GUERRERO, dañoBaseEspadaBronce, 1, 0, 0, 10, 3, 3);
+                    pj1 = new Caballero("CABALLERO", SALUD_GUERRERO, dañoGuerrero, 1, 0, 0, 10, 3, 3);
                     salidaClase = true;
                     break;
                 case 5:
-                    pj1 = new Barbaro("BARBARO", SALUD_GUERRERO, dañoBaseEspadaBronce, 1, 0, 10, 3,3 );
+                    pj1 = new Barbaro("BARBARO", SALUD_GUERRERO, dañoGuerrero, 1, 0, 10, 3,3 );
                     salidaClase = true;
                     break;
                 case 6:
-                    pj1 = new Fantasma( "FANTASMA", SALUD_LADRON, dañoBaseDagasHierro,1, 0, 10, 3);
+                    pj1 = new Fantasma( "FANTASMA", SALUD_LADRON, dañoLadron,1, 0, 10, 3);
                     salidaClase = true;
                     break;
                 case 7:
-                    pj1 = new Picaro( "PICARO", SALUD_LADRON, dañoBaseDagasHierro,1, 0, 10, 0);
+                    pj1 = new Picaro( "PICARO", SALUD_LADRON, dañoLadron,1, 0, 10, 0);
                     salidaClase = true;
                     break;
                 case 8:
-                    pj1 = new Hechicero("HECHICERO", SALUD_MAGO, dañoBaseVaritaMadera, 20, 50, 1, 0, 10);
+                    pj1 = new Hechicero("HECHICERO", SALUD_MAGO, dañoMago, 20, 50, 1, 0, 10);
                     salidaClase = true;
+                    pj1.getInventario().agregarObjeto(new ElixirMana(10), false);
                     break;
                 case 9:
-                    pj1 = new Ocultista("OCULTISTA", SALUD_MAGO, dañoBaseVaritaMadera, 20, 50, 1, 0, 10);
+                    pj1 = new Ocultista("OCULTISTA", SALUD_MAGO, dañoMago, 20, 50, 1, 0, 10);
                     salidaClase = true;
+                    pj1.getInventario().agregarObjeto(new ElixirMana(10), false);
                     break;
      
                 default:
@@ -280,7 +284,6 @@ public class DungeON {
      * @param enemigo
     */
     public static void comprobarFinCombate(Enemigo enemigo, Partida partida, Personaje pj1)throws IOException {
-        
         if (enemigo.getSalud() > 0) {
             System.out.println("PRUEBA AQUI DEPURACION");
         } else {
@@ -288,9 +291,22 @@ public class DungeON {
             partida.aumentarEnemigosDerrotados();
             System.out.println(BY + "El enemigo ha sido derrotado.");
             pj1.ganarExp(enemigo.getExpConcedida());
+    
+            // Posibilidad de ganar objeto del enemigo
+            if (!enemigo.getInventario().estaVacio()) {
+                Random r = new Random();
+                if (r.nextDouble() < 0.5) {
+                    int index = r.nextInt(enemigo.getInventario().getSize());
+                    Objeto objetoGanado = enemigo.getInventario().getObjeto(index);
+                    pj1.getInventario().agregarObjeto(objetoGanado, true);
+                    System.out.println(GREEN + "¡Has obtenido un objeto del enemigo derrotado!" + GREEN);
+                }
+            }
+    
             System.out.println(GREEN + "\n¡Has avanzado a la siguiente sala!" + GREEN);
         }
     }
+    
 
     /**
      * Genera un enemigo aleatorio para el combate.
@@ -309,6 +325,10 @@ public class DungeON {
             enemigo.getInventario().agregarObjeto(new PocionCura(1, 25), false);
             enemigo.getInventario().agregarObjeto(new Bomba(2, 15), false);
             enemigo.getInventario().agregarObjeto(new Bomba(2, 15), false);
+            enemigo.getInventario().agregarObjeto(new ElixirMana(10), false);
+            enemigo.getInventario().agregarObjeto(new ElixirMana(10), false);
+            enemigo.getInventario().agregarObjeto(new EscudoTemporal(), false);
+            enemigo.getInventario().agregarObjeto(new EscudoTemporal(), false);
         }
 
         return enemigo;
@@ -445,6 +465,48 @@ public class DungeON {
      * @param partida El objeto partida.
      */
     public static void ejecutarAtaqueEnemigo(Personaje pj1, Enemigo enemigo, Partida partida) {
+        Random random = new Random();
+        double[] MULTIPLICADOR_DAÑO = { 0, 0, 0.5, 0.5, 0.75, 0.75, 1, 1, 1, 1, 1.25, 1.5, 2 };
+    
+        int dañoReal = (int) (enemigo.getArma() * MULTIPLICADOR_DAÑO[random.nextInt(MULTIPLICADOR_DAÑO.length)]);
+
+        // Si el jugador es un Fantasma y tiene la evasión activa
+        if (pj1 instanceof Fantasma) {
+            Fantasma fantasma = (Fantasma) pj1;
+            if (fantasma.debeEsquivar()) {
+                System.out.println(MORADO + "¡Te desvaneces en el aire y esquivas el ataque enemigo!" + GREEN);
+                fantasma.consumirEsquivar();
+                return; // Termina el ataque enemigo sin hacer daño
+            }
+        }
+
+        pj1.recibirDañoJugador(dañoReal);
+        partida.sumarDañoRecibido(dañoReal); // Registrar daño recibido
+    
+        if (dañoReal == (enemigo.getArma() * 2)) {
+            System.out.println(BOLD + RED + enemigo.getNombre() + " te hace un GOLPE CRÍTICO de " + dañoReal + RESET + GREEN);
+        } else if (dañoReal == 0) {
+            System.out.println(BOLD + RED + enemigo.getNombre() + " ha fallado el ataque" + RESET + GREEN);
+        } else {
+            System.out.println(GREEN + "¡" + RED + enemigo.getNombre() + GREEN + " te ataca por " + RED + dañoReal + GREEN + "!" + GREEN);
+        }
+    }
+
+
+
+
+
+
+
+
+    /**
+     * Ejecuta el ataque del enemigo contra el jugador.
+     * 
+     * @param pj1 El personaje del jugador.
+     * @param enemigo El enemigo actual.
+     * @param partida El objeto partida.
+     */
+    public static void ejecutarAtaqueJefeFinal(Personaje pj1, Enemigo enemigo, Partida partida) {
         Random random = new Random();
         double[] MULTIPLICADOR_DAÑO = { 0, 0, 0.5, 0.5, 0.75, 0.75, 1, 1, 1, 1, 1.25, 1.5, 2 };
     

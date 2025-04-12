@@ -1,5 +1,7 @@
 package personajes;
+import inventario.Bomba;
 import inventario.Inventario;
+import inventario.PocionCura;
 import partida.*;
 
 import static ansi.Ansi.*;
@@ -17,6 +19,7 @@ import java.io.IOException;
 public abstract class Personaje extends Entidad {
 
     private Inventario inventario = new Inventario();
+    private boolean escudoActivo = false;
 
     // Nivel del jugador, va subiendo a medida que llegas a una cantidad determinada de experiencia.
     private int nivel;
@@ -51,7 +54,12 @@ public abstract class Personaje extends Entidad {
      * @param dañoEnemigo El daño que recibe el personaje.
      */
     public void recibirDañoJugador(int dañoEnemigo) {
-        setSalud(getSalud() - dañoEnemigo); // Usa el método setSalud de Entidad
+        if (escudoActivo) {
+            System.out.println("¡El escudo temporal bloquea el daño!");
+            escudoActivo = false;
+        }else {
+            setSalud(getSalud() - dañoEnemigo);
+        }
     }
 
     /**
@@ -114,6 +122,8 @@ public abstract class Personaje extends Entidad {
         System.out.println("¡Has subido al nivel " + AZUL + this.nivel  + GREEN + "!");
         System.out.println("Salud actual: " + AZUL + getSalud() + GREEN + " / " + AZUL + getSaludMaxima() + GREEN);
         System.out.println("Tu daño de arma ahora es: " + AZUL + getArma() + GREEN);
+        this.inventario.agregarObjeto(new PocionCura(1,30 ), false);
+        this.inventario.agregarObjeto(new Bomba(2, 15), false);
     }
     
     public void restaurarExp() {
@@ -132,7 +142,13 @@ public abstract class Personaje extends Entidad {
         System.out.println(GREEN + "\n╔═════════════════ ESTADO DEL PERSONAJE ═════════════════");
         System.out.println("║ Salud: " + AZUL + getSalud() + "/" + getSaludMaxima() + GREEN);
         System.out.println("║ EXP: " + AZUL + getExp() + "/" + getExpMaxima() + GREEN);
-        System.out.println("╚════════════════════════════════════════════════════════");
+    }
+
+    public boolean isEscudoActivo() { 
+        return escudoActivo;
+    }
+    public void setEscudoActivo(boolean valor) {
+        escudoActivo = valor; 
     }
     
 }

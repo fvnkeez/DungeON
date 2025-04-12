@@ -16,7 +16,6 @@ public class Enemigo extends Entidad {
     private Random random = new Random();
     private Inventario inventario = new Inventario();
 
-
     /**
      * Array con el nombre de los enemigos.
      */

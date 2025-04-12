@@ -76,4 +76,8 @@ public class Mago extends Personaje {
         System.out.println(MORADO + "Tu habilidad ahora hace más daño." + GREEN);
     }
 
+    public void recuperarMana(int mana) {
+        setMana(getMana() + mana);
+    }
+
 }
