@@ -221,7 +221,7 @@ public class DungeON {
 
         mostrarInicioCombate(pj1);
     
-        int sala = 6;
+        int sala = 1;
         boolean jugadorDerrotado = false;
 
         if (pj1 instanceof Picaro) {
@@ -492,50 +492,12 @@ public class DungeON {
         }
     }
 
-
-
-
-
-
-
-
-    /**
-     * Ejecuta el ataque del enemigo contra el jugador.
-     * 
-     * @param pj1 El personaje del jugador.
-     * @param enemigo El enemigo actual.
-     * @param partida El objeto partida.
-     */
-    public static void ejecutarAtaqueJefeFinal(Personaje pj1, Enemigo enemigo, Partida partida) {
-        Random random = new Random();
-        double[] MULTIPLICADOR_DAÑO = { 0, 0, 0.5, 0.5, 0.75, 0.75, 1, 1, 1, 1, 1.25, 1.5, 2 };
-    
-        int dañoReal = (int) (enemigo.getArma() * MULTIPLICADOR_DAÑO[random.nextInt(MULTIPLICADOR_DAÑO.length)]);
-
-        // Si el jugador es un Fantasma y tiene la evasión activa
-        if (pj1 instanceof Fantasma) {
-            Fantasma fantasma = (Fantasma) pj1;
-            if (fantasma.debeEsquivar()) {
-                System.out.println(MORADO + "¡Te desvaneces en el aire y esquivas el ataque enemigo!" + GREEN);
-                fantasma.consumirEsquivar();
-                return; // Termina el ataque enemigo sin hacer daño
-            }
-        }
-
-        pj1.recibirDañoJugador(dañoReal);
-        partida.sumarDañoRecibido(dañoReal); // Registrar daño recibido
-    
-        if (dañoReal == (enemigo.getArma() * 2)) {
-            System.out.println(BOLD + RED + enemigo.getNombre() + " te hace un GOLPE CRÍTICO de " + dañoReal + RESET + GREEN);
-        } else if (dañoReal == 0) {
-            System.out.println(BOLD + RED + enemigo.getNombre() + " ha fallado el ataque" + RESET + GREEN);
-        } else {
-            System.out.println(GREEN + "¡" + RED + enemigo.getNombre() + GREEN + " te ataca por " + RED + dañoReal + GREEN + "!" + GREEN);
-        }
-    }
-
     public static void lucharContraJefeFinal(Personaje pj1, Enemigo jefeFinal, Partida partida) throws IOException {
-        boolean jefeDerrotado = false;
+
+        if (pj1 instanceof Picaro) {
+            System.out.println(BOLD + BY +"\n¡El pícaro actúa antes de que el combate comience!" + RESET + GREEN);
+            ((Picaro) pj1).usarHabilidad(jefeFinal, partida);
+        }
     
         while (jefeFinal.getSalud() > 0 && pj1.getSalud() > 0) {
             pj1.mostrarEstado();

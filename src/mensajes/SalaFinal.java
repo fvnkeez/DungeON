@@ -6,7 +6,7 @@ public class SalaFinal {
 
     public static void mostrarSalaFinal() {
         System.out.println(GREEN + "\n╔════════════════════════════════╗");
-        System.out.println("║        SALA ACTUAL: " + AZUL + "SALA 6" + GREEN + "         ║");
+        System.out.println("║        SALA ACTUAL: " + AZUL + "SALA 6" + GREEN + "     ║");
         System.out.println("╚════════════════════════════════╝");
         
         try {

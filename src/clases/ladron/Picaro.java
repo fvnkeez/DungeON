@@ -22,16 +22,23 @@ public class Picaro extends Ladron {
             System.out.println("Ya has intentado el asesinato sorpresa en este combate." + GREEN);
             return false;
         }
-    
+
         habilidadUsada = true;
-    
-        int numeroMax = 6;
-        System.out.println(MORADO + "\nIntentas asesinar al enemigo de un solo golpe..." + GREEN);
-        System.out.println("Elige un número del 1 al " + numeroMax);
-        int numeroJugador = Utils.leerNumeroEntre(1, numeroMax);
+
+        int numeroMax = (enemigo instanceof personajes.JefeFinal) ? 666 : 7;
         int numeroCorrecto = random.nextInt(numeroMax) + 1;
-        numeroMax ++;
-    
+
+        if (enemigo instanceof personajes.JefeFinal) {
+            System.out.println(MORADO + "\nᚲ ᛒ ᚱ ̷̷̷̷̷̷̷̷̷̷̷̷̷̷̷̷̷̷̷̷̷̷̷̷̷̷");
+            System.out.println("SUSURROS ANTIGUOS INUNDAN TU MENTE...");
+            System.out.println("Elige un número entre 1 y " + numeroMax);
+        } else {
+            System.out.println(MORADO + "\nIntentas asesinar al enemigo de un solo golpe..." + GREEN);
+            System.out.println("Elige un número del 1 al " + numeroMax);
+        }
+
+        int numeroJugador = Utils.leerNumeroEntre(1, numeroMax);
+
         // Animación textual
         try {
             System.out.print("Te deslizas entre las sombras");
@@ -54,19 +61,20 @@ public class Picaro extends Ladron {
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
-    
+
         if (numeroJugador == numeroCorrecto) {
             enemigo.setSalud(0);
-            System.out.println(BOLD +"\n¡ÉXITO!"+ RESET + GREEN +  " Has asesinado al enemigo de forma fulminante." + GREEN);
+            if (enemigo instanceof personajes.JefeFinal) {
+                System.out.println(BOLD +"\nHas derrotado al enemigo final de un solo golpe." + RESET + GREEN);
+            } else {
+                System.out.println(BOLD +"\n¡ÉXITO!" + RESET + GREEN + " Has asesinado al enemigo de forma fulminante." + GREEN);
+            }
         } else {
-            System.out.println(BOLD + RED +"\nFallaste..." + RESET + GREEN + " el enemigo ha esquivado el golpe letal." + GREEN);
+            System.out.println(BOLD + RED + "\nFallaste..." + RESET + GREEN + " el enemigo ha esquivado el golpe letal." + GREEN);
             System.out.println("El número objetivo era: " + AZUL + numeroCorrecto + GREEN);
             System.out.println("\nTu número fue: " + AZUL + numeroJugador + GREEN);
         }
-
-        System.out.println("El rango de números ha aumentado.");
-
-        return true; // Se gasta el turno igualmente
+        return true;    
     }
     
 
