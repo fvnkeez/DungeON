@@ -41,7 +41,7 @@ public class Ocultista extends Mago {
         System.out.println(GREEN + "Te queda : " + AZUL + getMana() + GREEN + " / " + GREEN + getManaMaximo() + " de maná." + RESET);
         System.out.println("Al enemigo le queda: " + RED + enemigo.getSalud() + "/" + enemigo.getSaludMaxima() + GREEN + " de salud.");
 
-        setMana(getMana() -1);
+        setMana(getMana() -5);
 
         return true;
     }
