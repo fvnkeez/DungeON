@@ -4,7 +4,12 @@ import static ansi.Ansi.*;
 
 import partida.Partida;
 import personajes.Enemigo;
-
+/**
+ * @date 13/04/2025
+ * @version 1.8
+ * @author Dani Fuente
+ * Descripción: Clase Ocultista, subclase de la clase Ladrón. Su habilidad consiste en robar vida al enemigo.
+ */
 public class Ocultista extends Mago {
 
     public Ocultista(String nombre, int salud, int arma, int mana, int manaMaximo, int nivel, int exp, int expMaxima) {

@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.Random;
 
 /**
- * FECHA: 06/04/2025
+ * @date 13/04/2025
  * @version 1.8
  * @author Dani Fuente
  * Descripción: Clase Ladrón, es una de las tres "clases" base del juego. Se caracteriza por tener salud media y daño medio.
@@ -19,9 +19,19 @@ import java.util.Random;
  */
 public class Ladron extends Personaje {
 
+    /**
+     * Random para elegir qué objeto robar del enemigo.
+     */
     private Random random = new Random();
 
+    /**
+     * Nombre de la habilidad
+     */
     private String nombreHabilidad = "Robo";
+    
+    /**
+     * Número de usos de la habilidad
+     */
     private int usos;
 
     public Ladron(String nombre, int salud, int arma, int nivel, int exp, int expMaxima, int usos) {

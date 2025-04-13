@@ -7,10 +7,24 @@ import partida.Partida;
 import personajes.Enemigo;
 import utilidades.*;
 
+/**
+ * @date 13/04/2025
+ * @version 1.8
+ * @author Dani Fuente
+ * Descripción: Clase Pícaro, subclase de la clase Ladrón. Su habilidad se activa automáticamente al empezar un
+ * combate. 
+ */
 public class Picaro extends Ladron {
 
+    /*
+     * Random para elegir un número aleatorio entre el rango decidido
+     */
     private Random random = new Random();
-    private boolean habilidadUsada = false; // Marca si ya se usó en este combate
+
+    /*
+     * Marca si ya se ha activado la habilidad este turno
+     */
+    private boolean habilidadUsada = false;
 
     public Picaro(String nombre, int salud, int arma, int nivel, int exp, int expMaxima, int usos) {
         super(nombre, salud, arma, nivel, exp, expMaxima, usos);
@@ -24,8 +38,11 @@ public class Picaro extends Ladron {
         }
 
         habilidadUsada = true;
-
-        int numeroMax = (enemigo instanceof personajes.JefeFinal) ? 666 : 7;
+        
+        // Número base de rango máximo, se va sumando con cada enemigo asesinado.
+        int numSumar = 6;
+        // Si es el enemigo final, el rango máximo se cambia a 666 para que sea casi imposible matarle de un golpe.
+        int numeroMax = (enemigo instanceof personajes.JefeFinal) ? 666 : numSumar;
         int numeroCorrecto = random.nextInt(numeroMax) + 1;
 
         if (enemigo instanceof personajes.JefeFinal) {
@@ -68,6 +85,9 @@ public class Picaro extends Ladron {
                 System.out.println(BOLD +"\nHas derrotado al enemigo final de un solo golpe." + RESET + GREEN);
             } else {
                 System.out.println(BOLD +"\n¡ÉXITO!" + RESET + GREEN + " Has asesinado al enemigo de forma fulminante." + GREEN);
+                // Aumenta el número de rango máximo si se acierta
+                numSumar++;
+                System.out.println(MORADO + "El rango máximo aumenta..." + GREEN);
             }
         } else {
             System.out.println(BOLD + RED + "\nFallaste..." + RESET + GREEN + " el enemigo ha esquivado el golpe letal." + GREEN);

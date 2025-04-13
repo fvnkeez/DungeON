@@ -4,14 +4,14 @@ import personajes.Enemigo;
 
 /**
  * FECHA: 13/04/2025
- * @version Final
+ * @version 1.8
  * @author Dani Fuente
  * Descripción: Clase Fantasma, subclase de la clase Ladrón. Su habilidad consiste en gastar un uso de su habilidad para
  * esquivar el próximo ataque del enemigo.
  */
 public class Fantasma extends Ladron {
 
-    /*
+    /**
      * Boolean que se "activa" al usar la habilidad, se usa para determinar si está activada y
      * gastar un uso para esquivar el próximo ataque.
      */

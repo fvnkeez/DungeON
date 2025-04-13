@@ -6,7 +6,7 @@ import personajes.Enemigo;
 
 /**
  * @date 13/04/2025
- * @version Final
+ * @version 1.8
  * @author Dani Fuente
  * Descripción: Clase Caballero, es "subclase" de la "clase" Guerrero, y añade un atributo llamado escudo, que añade
  * vida extra.

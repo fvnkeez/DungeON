@@ -1,6 +1,6 @@
 package ansi;
 
-/*
+/**
  * Clase ANSI con colores para mostrar por consola, llamándolos mediante static y nombre de variable
  */
 public class Ansi {

@@ -6,11 +6,11 @@ import personajes.Enemigo;
 import personajes.Personaje;
 
 /**
- * FECHA: 10/04/2025
+ * @date 13/04/2025
  * @version Final
  * @author Dani Fuente
  * Descripción: Clase Mago, es una de las tres "clases" base del juego. Se caracteriza por tener baja salud y daño alto.
- * Sus "subclases" por el momento son "Ocultista" y "Hechicero", aunque no están implementadas.
+ * Sus "subclases" por el momento son "Ocultista" y "Hechicero".
  */
 public class Mago extends Personaje {
 
@@ -19,7 +19,13 @@ public class Mago extends Personaje {
      * si se tiene menos maná de lo que cuesta.
      */
     private int mana; 
+    /**
+     * Número maximo de maná, marca el límite para no ganar más de este número.
+     */
     private int manaMaximo; 
+    /**
+     * Daño base de la bola de fuego, va aumentando con el nivel.
+     */
     private double dañoBaseBolaFuego = 2;
 
     

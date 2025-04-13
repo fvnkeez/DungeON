@@ -4,11 +4,20 @@ import partida.Partida;
 import personajes.Enemigo;
 
 import static ansi.Ansi.*;
-
 import java.util.Random;
 
+/**
+ * @date 13/04/2025
+ * @version 1.8
+ * @author Dani Fuente
+ * Descripción: Clase Hechicero, subclase de la clase Mago. Su habilidad es ilimitada, y consiste en elegir un hechizo
+ * aleatorio de su repertorio. Unos tienen resultados buenos y otros malos.
+ */
 public class Hechicero extends Mago {
 
+    /**
+     * Random para elegir el hechizo a usar
+     */
     private Random random = new Random();
 
     public Hechicero(String nombre, int salud, int arma, int mana, int manaMaximo, int nivel, int exp, int expMaxima) {
@@ -43,7 +52,7 @@ public class Hechicero extends Mago {
 
             case 2:
                 System.out.println(GREEN + "Hechizo: Rayo de Energía - Daño decente y seguro." + RESET);
-                int daño3 = 12 + random.nextInt(6); // 12-17
+                int daño3 = 15 + random.nextInt(6); // 12-17
                 enemigo.recibirDaño(daño3);
                 partida.sumarDañoInfligido(daño3);
                 System.out.println("→ Has infligido " + RED + daño3 + RESET + " de daño.");

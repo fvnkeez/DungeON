@@ -5,8 +5,6 @@ import static ansi.Ansi.*;
 import personajes.Enemigo;
 import personajes.Personaje;
 
-
-
 public class Bomba extends Objeto {
 
     private int daño;
