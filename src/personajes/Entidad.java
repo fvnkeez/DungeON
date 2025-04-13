@@ -1,6 +1,9 @@
 package personajes;
 
 /**
+ * @date 13/04/2025
+ * @version 1.8
+ * @author Dani Fuente
  * Clase abstracta que representa una entidad en el juego.
  * Esta clase sirve como base para la creación de personajes y enemigos.
  * Contiene atributos y métodos comunes como salud, nombre, y manejo de daño.

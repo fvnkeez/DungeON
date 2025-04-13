@@ -16,9 +16,9 @@ import utilidades.*;
 
 
 /**
- * @author DFP
- * @version Final
- * @date 10/04/2025
+ * @author Dani Fuente
+ * @version 1.8
+ * @date 13/04/2025
  * Programa principal del videojuego DungeON
  */
 public class DungeON {

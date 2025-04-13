@@ -5,8 +5,8 @@ import java.util.Random;
 import inventario.Inventario;
 
 /**
- * FECHA: 12/03/2025
- * @version 1.7
+ * @date 13/04/2025
+ * @version 1.8
  * @author Dani Fuente
  * Descripción: Clase Enemigo, se utiliza para guardar sus atributos y para llamarla cada vez que se reinicia el bucle
  * de combate, creando un enemigo aleatorio nuevo. Ahora hereda de la clase Entidad para reutilizar atributos y métodos comunes.

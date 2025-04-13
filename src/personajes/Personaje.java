@@ -8,26 +8,38 @@ import static ansi.Ansi.*;
 
 import java.io.IOException;
 
-
 /**
- * FECHA: 12/03/2025
- * @version 1.7
+ * @date 13/04/2025
+ * @version 1.8
  * @author Dani Fuente
  * Descripción: Clase base para el resto de "clases" del juego. Todas tendrán salud, daño de arma, el nombre
  * de su clase y salud máxima. Ahora hereda de la clase Entidad para reutilizar atributos y métodos comunes.
  */
 public abstract class Personaje extends Entidad {
 
+    /**
+     * Se crea un objeto de la clase Inventario, que llama a un constructor
+     * con un ArrayList de objetos vacío.
+     */
     private Inventario inventario = new Inventario();
+    /**
+     * Boolean para verificar si el jugador tiene el objeto escudo activo.
+     */
     private boolean escudoActivo = false;
 
-    // Nivel del jugador, va subiendo a medida que llegas a una cantidad determinada de experiencia.
+    /**
+     * Nivel del jugador, va subiendo a medida que llegas a una cantidad determinada de experiencia.
+     */
     private int nivel;
 
-    // Experiencia del jugador, va subiendo a medida que derrotas enemigos.
+    /**
+     * Experiencia del jugador, va subiendo a medida que derrotas enemigos.
+     */
     private int exp;
 
-    // Atributo para mostrar la experiencia maxima por nivel del jugador.
+    /**
+     * Atributo para mostrar la experiencia maxima por nivel del jugador.
+     */
     private int expMaxima;
 
     /**
@@ -106,6 +118,11 @@ public abstract class Personaje extends Entidad {
         System.out.println("EXP actual: " + this.exp + " / " + this.expMaxima);
     }
     
+    /**
+     * Método que sube los stats del personaje al subir de nivel.
+     * Aumenta: el nivel, la experiencia máxima, la salud máxima y actual, y el daño. 
+     * También agrega una poción y una bomba.
+     */
     public void subirNivel() {
         this.nivel++;
         this.expMaxima *= 1.3;
@@ -138,6 +155,10 @@ public abstract class Personaje extends Entidad {
         return inventario;
     }
 
+    /**
+     * Muestra el estado actual del personaje: su salud y experiencia actual, y dependiendo de la clase muestra
+     * sus usos restantes o maná restante.
+     */
     public void mostrarEstado() {
         System.out.println(GREEN + "\n╔═════════════════ ESTADO DEL PERSONAJE ═════════════════");
         System.out.println("║ Salud: " + AZUL + getSalud() + "/" + getSaludMaxima() + GREEN);

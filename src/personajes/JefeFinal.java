@@ -13,6 +13,9 @@ import inventario.*;
 import partida.Partida;
 
 /**
+ * @date 13/04/2025
+ * @version 1.8
+ * @author Dani Fuente
  * JefeFinal representa al jefe de la sala final del juego.
  * Es un enemigo especial con estadísticas superiores y un nombre único.
  */

@@ -19,7 +19,7 @@ public class SalaFinal {
 
             Thread.sleep(1200);
 
-                    // Animación en zigzag hacia la derecha con corrupción progresiva
+            // Animación en zigzag hacia la derecha con corrupción progresiva
             String[][] carteles = {
                 {
                     "╔════════════════════════════════╗",
@@ -136,5 +136,4 @@ public class SalaFinal {
             e.printStackTrace();
         }
     }
-    
 }
