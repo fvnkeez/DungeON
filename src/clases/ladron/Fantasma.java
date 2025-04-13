@@ -3,7 +3,7 @@ import partida.Partida;
 import personajes.Enemigo;
 
 /**
- * FECHA: 13/04/2025
+ * @date 13/04/2025
  * @version 1.8
  * @author Dani Fuente
  * Descripción: Clase Fantasma, subclase de la clase Ladrón. Su habilidad consiste en gastar un uso de su habilidad para

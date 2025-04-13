@@ -8,7 +8,7 @@ import static ansi.Ansi.*;
 import java.util.Random;
 
 /**
- * FECHA: 13/04/2025
+ * @date 13/04/2025
  * @version 1.8
  * @author Dani Fuente
  * Descripción: Clase Guerrero, es una de las tres "clases" base del juego. Se caracteriza por ser la que más salud tiene,
