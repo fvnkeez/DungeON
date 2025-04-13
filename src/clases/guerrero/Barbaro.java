@@ -4,11 +4,19 @@ import partida.Partida;
 import personajes.Enemigo;
 
 import static ansi.Ansi.*;
-
 import java.util.Random;
-
+/**
+ * @date 13/04/2025
+ * @version Final
+ * @author Dani Fuente
+ * Descripción: Clase Bárbaro, es "subclase" de la "clase" Guerrero, y añade un atributo llamado furia, que añade
+ * daño extra.
+ */
 public class Barbaro extends Guerrero {
 
+    /*
+     * Acumula el daño recibido por el enemigo y lo libera con su habilidad. 
+     */
     private int furia;
 
     public Barbaro(String nombre, int salud, int arma, int nivel, int exp, int expMaxima, int usos, int usosMaximos) {

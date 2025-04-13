@@ -1,5 +1,8 @@
 package ansi;
 
+/*
+ * Clase ANSI con colores para mostrar por consola, llamándolos mediante static y nombre de variable
+ */
 public class Ansi {
     public static final String RESET = "\u001B[0m";
 

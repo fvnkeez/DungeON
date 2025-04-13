@@ -5,12 +5,11 @@ import partida.*;
 import personajes.Enemigo;
 
 /**
- * FECHA: 10/02/2025
- * @version 1.4
+ * @date 13/04/2025
+ * @version Final
  * @author Dani Fuente
  * Descripción: Clase Caballero, es "subclase" de la "clase" Guerrero, y añade un atributo llamado escudo, que añade
- * vida extra. Todavía no se usa en el juego porque tengo que implementar la funcionalidad de subir niveles. Llegado 
- * a un nivel por determinar, el jugador podrá elegir a qué "subclase" cambiar.
+ * vida extra.
  */
 public class Caballero extends Guerrero {
     /**
@@ -60,8 +59,6 @@ public class Caballero extends Guerrero {
             return false;
         }
     }
-
-    
 
     public int getEscudo() {
         return escudo;

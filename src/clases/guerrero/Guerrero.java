@@ -5,26 +5,30 @@ import personajes.Enemigo;
 import personajes.Personaje;
 
 import static ansi.Ansi.*;
-
 import java.util.Random;
 
-
 /**
- * FECHA: 10/04/2025
+ * FECHA: 13/04/2025
  * @version Final
  * @author Dani Fuente
  * Descripción: Clase Guerrero, es una de las tres "clases" base del juego. Se caracteriza por ser la que más salud tiene,
- * pero la que hace el daño más bajo. Sus "subclases" por el momento son "Caballero" y "Bárbaro", aunque Bárbaro no está
- * implementada.
+ * pero la que hace el daño más bajo. Sus "subclases" por el momento son "Caballero" y "Bárbaro".
  */
 public class Guerrero extends Personaje{
 
+    /*
+     * String con el nombre de la habilidad
+     */
     private String nombreHabilidad = "Ataque doble";
+
     /**
      * Cantidad de usos disponibles para la habilidad
      */
     private int usos; 
 
+    /*
+     * Usos máximos de la habilidad
+     */
     private int usosMaximos; 
 
 
