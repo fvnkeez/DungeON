@@ -30,8 +30,7 @@ public class Guerrero extends Personaje{
      * Usos máximos de la habilidad
      */
     private int usosMaximos; 
-
-
+    
     public Guerrero (String nombre, int salud, int arma, int nivel, int exp, int expMaxima, int usos, int usosMaximos) {
         super(nombre, salud, arma, nivel, exp, expMaxima);
         this.usos = usos;
