@@ -28,7 +28,8 @@ DungeON es un videojuego de rol (RPG) por turnos donde los jugadores deben enfre
      - `1`: Jugar.
      - `2`: Ver las instrucciones.
      - `3`: Ver los créditos.
-     - `4`: Salir del juego.
+     - `4`: Mostrar historial partidas.
+     - `5`: Salir del juego.
 3. **Selección de clase:**
    - Elige entre Guerrero, Mago o Ladrón.
    - Cada clase tiene atributos únicos de salud y daño.
