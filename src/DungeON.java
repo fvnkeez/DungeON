@@ -1,6 +1,7 @@
 import static ansi.Ansi.*;
 
 import java.io.*;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -34,8 +35,9 @@ public class DungeON {
      * Muestra el menú principal del juego y maneja las opciones seleccionadas por el usuario.
      * 
      * @throws IOException Si ocurre un error de entrada/salida.
+     * @throws SQLException Error de MysQL
      */
-    public static void menuPrincipal() throws IOException {
+    public static void iniciarJuego() throws IOException, SQLException {
         
         reproductor.reproducirMusica("/Resources/musicaMenu.wav");
         MensajeBienvenida.mostrarBienvenida();
@@ -51,6 +53,7 @@ public class DungeON {
                 switch (eleccionMenu) {
                     case 1:
                         System.out.println("\nEntrando a partida...\n");
+                        menuCombate(partida);
                         salidaMenu = true;
                         break;
                     case 2:
@@ -65,6 +68,9 @@ public class DungeON {
                     case 5:
                         System.out.println(RED + "\nSaliendo del juego...\n" + GREEN);
                         System.exit(0);
+
+                    case 6:
+                        Partida.mostrarHistorialBBDD();
                     default:
                         System.out.println("Número no válido, introduce 1, 2 o 3");
                 }
@@ -548,11 +554,11 @@ public class DungeON {
      * 
      * @param args Argumentos de la línea de comandos (no se utilizan).
      * @throws IOException Si ocurre un error de entrada/salida.
+     * @throws SQLException Error de MySQL.
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, SQLException {
         
-        menuPrincipal();
-        menuCombate(partida);
+        iniciarJuego();
 
     }
 }

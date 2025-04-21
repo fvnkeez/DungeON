@@ -35,7 +35,7 @@ public class Hechicero extends Mago {
                 int daño1 = getArma() * 2;
                 enemigo.recibirDaño(daño1);
                 partida.sumarDañoInfligido(daño1);
-                System.out.println("→ Has infligido " + RED + daño1 + RESET + " de daño.");
+                System.out.println("Has infligido " + RED + daño1 + RESET + " de daño.");
                 System.out.println("Al enemigo le queda: " + RED + enemigo.getSalud() + "/" + enemigo.getSaludMaxima() + GREEN + " de salud.");
 
             break;
@@ -45,7 +45,7 @@ public class Hechicero extends Mago {
                 int daño2 = 20 + random.nextInt(21); // 20 a 40
                 enemigo.recibirDaño(daño2);
                 partida.sumarDañoInfligido(daño2);
-                System.out.println("→ Has infligido " + RED + daño2 + RESET + " de daño.");
+                System.out.println(GREEN + "Has infligido " + RED + daño2 + GREEN + " de daño.");
                 System.out.println("Al enemigo le queda: " + RED + enemigo.getSalud() + "/" + enemigo.getSaludMaxima() + GREEN + " de salud.");
 
             break;
@@ -55,7 +55,7 @@ public class Hechicero extends Mago {
                 int daño3 = 15 + random.nextInt(6); // 12-17
                 enemigo.recibirDaño(daño3);
                 partida.sumarDañoInfligido(daño3);
-                System.out.println("→ Has infligido " + RED + daño3 + RESET + " de daño.");
+                System.out.println(GREEN + "Has infligido " + RED + daño3 + GREEN + " de daño.");
                 System.out.println("Al enemigo le queda: " + RED + enemigo.getSalud() + "/" + enemigo.getSaludMaxima() + GREEN + " de salud.");
 
             break;
@@ -64,7 +64,7 @@ public class Hechicero extends Mago {
                 System.out.println(MORADO + "Hechizo: Tentáculos del Vacío - Golpeas dos veces con daño impredecible..." + RESET);
                 for (int i = 1; i <= 2; i++) {
                     int daño = 8 + random.nextInt(6); // 8–13
-                    System.out.println("→ Tentáculo " + i + " inflige " + daño + " de daño.");
+                    System.out.println(GREEN + "Tentáculo " + AZUL + i + GREEN + " inflige " + RED + daño + GREEN + " de daño.");
                     enemigo.recibirDaño(daño);
                     partida.sumarDañoInfligido(daño);
                 }

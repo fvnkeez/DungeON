@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.io.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
 import java.sql.Timestamp;
@@ -244,32 +245,35 @@ public class Partida {
         }
     }
 
+    /**
+     * Guarda la partida que se acaba de jugar en la base de datos de MySQL
+     */
     public void guardarEnBBDD() {
         String sql = "INSERT INTO partidas (nombre_jugador, clase_personaje, fecha_inicio, hora_fin, duracion, resultado, " +
                     "ultima_sala, enemigos_derrotados, daño_infligido, daño_recibido, habilidades_usadas, objetos_usados) " +
                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        try (Connection conn = bbdd.ConexionDB.conectar();
-            PreparedStatement stmt = conn.prepareStatement(sql)) {
+        try (Connection con = bbdd.ConexionDB.conectar();
+            PreparedStatement st = con.prepareStatement(sql)) {
 
             Duration duracion = Duration.between(fechaInicio, horaFin);
             long segundosTotales = duracion.getSeconds();
             Time duracionSQL = Time.valueOf(String.format("%02d:%02d:%02d", segundosTotales / 3600, (segundosTotales % 3600) / 60, segundosTotales % 60));
 
-            stmt.setString(1, nombreJugador);
-            stmt.setString(2, personaje.getNombre());
-            stmt.setTimestamp(3, Timestamp.valueOf(fechaInicio));
-            stmt.setTimestamp(4, Timestamp.valueOf(horaFin));
-            stmt.setTime(5, duracionSQL);
-            stmt.setString(6, personaje.getSalud() > 0 ? "VICTORIA" : "DERROTA");
-            stmt.setInt(7, ultimaSala);
-            stmt.setInt(8, enemigosDerrotados);
-            stmt.setInt(9, dañoTotalInfligido);
-            stmt.setInt(10, dañoRecibido);
-            stmt.setInt(11, habilidadesUsadas);
-            stmt.setInt(12, objetosUsados);
+            st.setString(1, nombreJugador);
+            st.setString(2, personaje.getNombre());
+            st.setTimestamp(3, Timestamp.valueOf(fechaInicio));
+            st.setTimestamp(4, Timestamp.valueOf(horaFin));
+            st.setTime(5, duracionSQL);
+            st.setString(6, personaje.getSalud() > 0 ? "VICTORIA" : "DERROTA");
+            st.setInt(7, ultimaSala);
+            st.setInt(8, enemigosDerrotados);
+            st.setInt(9, dañoTotalInfligido);
+            st.setInt(10, dañoRecibido);
+            st.setInt(11, habilidadesUsadas);
+            st.setInt(12, objetosUsados);
 
-            stmt.executeUpdate();
+            st.executeUpdate();
             System.out.println("Partida guardada en la base de datos correctamente.");
 
         } catch (SQLException e) {
@@ -277,4 +281,45 @@ public class Partida {
         }
     }
 
+    public static void mostrarHistorialBBDD() throws SQLException {
+        String sql = "SELECT * FROM Partidas";
+
+        try {
+            Connection con = bbdd.ConexionDB.conectar();
+            PreparedStatement st = con.prepareStatement(sql);
+            ResultSet rs = st.executeQuery(); 
+
+            System.out.println("\n" + BOLD + "═════════════════════════════════════════════════════════════════════════");
+            System.out.println("                  HISTORIAL DE PARTIDAS GUARDADAS EN MYSQL");
+            System.out.println("═════════════════════════════════════════════════════════════════════════" + RESET + GREEN);
+
+            while (rs.next()) {
+
+                System.out.println(GREEN + "\n┌─────────────────────────────── PARTIDA #" + rs.getInt("id") + " ───────────────────────────────┐");
+
+                System.out.printf("│ %-20s : %s\n", AZUL + "Jugador" + GREEN, rs.getString("nombre_jugador"));
+                System.out.printf("│ %-20s : %s\n", AZUL + "Fecha Inicio" + GREEN, rs.getTimestamp("fecha_inicio"));
+                System.out.printf("│ %-20s : %s\n", AZUL + "Hora Fin" + GREEN, rs.getTimestamp("hora_fin"));
+                System.out.printf("│ %-20s : %s\n", AZUL + "Duración" + GREEN, rs.getTime("duracion"));
+                System.out.printf("│ %-20s : %s\n", AZUL + "Resultado" + GREEN, rs.getString("resultado"));
+                System.out.printf("│ %-20s : %d\n", AZUL + "Última Sala" + GREEN, rs.getInt("ultima_sala"));
+                System.out.printf("│ %-20s : %d\n", AZUL + "Enemigos Derrotados" + GREEN, rs.getInt("enemigos_derrotados"));
+                System.out.printf("│ %-20s : %d\n", AZUL + "Daño Infligido" + GREEN, rs.getInt("daño_infligido"));
+                System.out.printf("│ %-20s : %d\n", AZUL + "Daño Recibido" + GREEN, rs.getInt("daño_recibido"));
+                System.out.printf("│ %-20s : %d\n", AZUL + "Habilidades Usadas" + GREEN, rs.getInt("habilidades_usadas"));
+                System.out.printf("│ %-20s : %d\n", AZUL + "Objetos Usados" + GREEN, rs.getInt("objetos_usados"));
+                System.out.printf("│ %-20s : %s\n", AZUL + "Clase Personaje" + GREEN, rs.getString("clase_personaje"));
+
+            }
+
+            if (rs.getInt("id") == 0) {
+                System.out.println("No hay partidas guardadas en la base de datos.");
+            }
+      
+        } catch (SQLException sqle) {
+            System.out.println("Error al consultar el historial de partidas: " + sqle.getMessage());
+        } catch (Exception e){
+            System.out.println("Error " + e.getMessage());
+        }
+    }
 }

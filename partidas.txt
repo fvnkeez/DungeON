@@ -1,2 +1,3 @@
 Nombre jugador: Dancaballero | Clase: Caballero |Fecha: 21/04/2025 12:04:19 | Duración: 00:00:13 | Resultado: DERROTA | Sala: 4 | Enemigos derrotados: 3 | Daño infligido: 192 | Daño recibido: 237 | Habilidades usadas: 0 | Objetos usados: 0
 Nombre jugador: Danguerrero | Clase: Guerrero |Fecha: 21/04/2025 12:04:19 | Duración: 00:01:07 | Resultado: VICTORIA | Sala: 9 | Enemigos derrotados: 9 | Daño infligido: 396 | Daño recibido: 391 | Habilidades usadas: 0 | Objetos usados: 7
+Nombre jugador: Danhechicero | Clase: Hechicero |Fecha: 21/04/2025 13:47:07 | Duración: 00:01:20 | Resultado: VICTORIA | Sala: 6 | Enemigos derrotados: 6 | Daño infligido: 277 | Daño recibido: 160 | Habilidades usadas: 13 | Objetos usados: 6
