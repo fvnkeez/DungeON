@@ -1,2 +1,2 @@
-Fecha: 12/04/2025 14:04:21 | Duración: 00:00:31 | Jugador: GUERRERO | Resultado: VICTORIA | Sala: 6 | Enemigos derrotados: 6 | Daño infligido: 249 | Daño recibido: 151 | Habilidades: 2 | Objetos: 0
-Fecha: 12/04/2025 14:12:23 | Duración: 00:00:50 | Jugador: Isildur | Resultado: VICTORIA | Sala: 6 | Enemigos derrotados: 6 | Daño infligido: 215 | Daño recibido: 165 | Habilidades: 0 | Objetos: 4
+Nombre jugador: Dancaballero | Clase: Caballero |Fecha: 21/04/2025 12:04:19 | Duración: 00:00:13 | Resultado: DERROTA | Sala: 4 | Enemigos derrotados: 3 | Daño infligido: 192 | Daño recibido: 237 | Habilidades usadas: 0 | Objetos usados: 0
+Nombre jugador: Danguerrero | Clase: Guerrero |Fecha: 21/04/2025 12:04:19 | Duración: 00:01:07 | Resultado: VICTORIA | Sala: 9 | Enemigos derrotados: 9 | Daño infligido: 396 | Daño recibido: 391 | Habilidades usadas: 0 | Objetos usados: 7

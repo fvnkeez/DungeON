@@ -16,15 +16,20 @@ import utilidades.*;
  */
 public class Picaro extends Ladron {
 
-    /*
+    /**
      * Random para elegir un número aleatorio entre el rango decidido
      */
     private Random random = new Random();
 
-    /*
+    /**
      * Marca si ya se ha activado la habilidad este turno
      */
     private boolean habilidadUsada = false;
+
+    /**
+     * Número base de rango máximo, se va sumando con cada enemigo asesinado.
+     */
+    private int numSumar = 6;
 
     public Picaro(String nombre, int salud, int arma, int nivel, int exp, int expMaxima, int usos) {
         super(nombre, salud, arma, nivel, exp, expMaxima, usos);
@@ -39,15 +44,13 @@ public class Picaro extends Ladron {
 
         habilidadUsada = true;
         
-        // Número base de rango máximo, se va sumando con cada enemigo asesinado.
-        int numSumar = 6;
         // Si es el enemigo final, el rango máximo se cambia a 666 para que sea casi imposible matarle de un golpe.
         int numeroMax = (enemigo instanceof personajes.JefeFinal) ? 666 : numSumar;
         int numeroCorrecto = random.nextInt(numeroMax) + 1;
 
         if (enemigo instanceof personajes.JefeFinal) {
-            System.out.println(MORADO + "\nᚲ ᛒ ᚱ ̷̷̷̷̷̷̷̷̷̷̷̷̷̷̷̷̷̷̷̷̷̷̷̷̷̷");
-            System.out.println("SUSURROS ANTIGUOS INUNDAN TU MENTE...");
+            System.out.println(MORADO + "SUSURROS ANTIGUOS INUNDAN TU MENTE...");
+            System.out.println("Parece que será más difícil asesinar a este enemigo...");
             System.out.println("Elige un número entre 1 y " + numeroMax);
         } else {
             System.out.println(MORADO + "\nIntentas asesinar al enemigo de un solo golpe..." + GREEN);

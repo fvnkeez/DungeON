@@ -22,6 +22,7 @@ public class Partida {
 
     private Personaje personaje;
     private String nombreJugador;
+    private String clasePersonaje;
     private int enemigosDerrotados;
     private int dañoTotalInfligido;
     private int dañoRecibido;
@@ -111,7 +112,8 @@ public class Partida {
 
         getDuracionPartida();
 
-        System.out.println("Clase del personaje: " + AZUL + (personaje != null ? personaje.getNombre() : "Desconocido") + GREEN);
+        System.out.println("Nombre del jugador: " + AZUL + nombreJugador + GREEN);
+        System.out.println("Clase del personaje: " + AZUL + personaje.getNombre() + GREEN);
         System.out.println("Enemigos derrotados: " + AZUL + enemigosDerrotados + GREEN);
         System.out.println("Daño total infligido: " + AZUL + dañoTotalInfligido + GREEN);
         System.out.println("Daño total recibido: " + AZUL + dañoRecibido + GREEN);
@@ -138,6 +140,7 @@ public class Partida {
      */
     public void setPersonaje(Personaje personaje) {
         this.personaje = personaje;
+        this.clasePersonaje = personaje.getClass().getSimpleName();
     }
 
     /**
@@ -177,8 +180,9 @@ public class Partida {
         String resultado = personaje.getSalud() > 0 ? "VICTORIA" : "DERROTA";
 
         String linea = String.format(
-            "Jugador: %s | Fecha: %s | Duración: %02d:%02d:%02d | Resultado: %s | Sala: %d | Enemigos derrotados: %d | Daño infligido: %d | Daño recibido: %d | Habilidades usadas: %d | Objetos usados: %d\n",
+            "Nombre jugador: %s | Clase: %s |Fecha: %s | Duración: %02d:%02d:%02d | Resultado: %s | Sala: %d | Enemigos derrotados: %d | Daño infligido: %d | Daño recibido: %d | Habilidades usadas: %d | Objetos usados: %d\n",
             nombreJugador != null ? nombreJugador : personaje.getNombre(),
+            clasePersonaje,
             fechaInicio.format(formatter),
             horas, minutos, segundos,
             resultado,
