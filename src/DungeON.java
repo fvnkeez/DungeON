@@ -48,7 +48,7 @@ public class DungeON {
         do {
             try {
                 mostrarMenuPrincipal();
-                eleccionMenu = Utils.leerNumeroEntre(1,4);
+                eleccionMenu = Utils.leerNumeroEntre(1,6);
 
                 switch (eleccionMenu) {
                     case 1:
@@ -66,16 +66,15 @@ public class DungeON {
                         Partida.mostrarHistorialDesdeFichero();
                         break;
                     case 5:
+                        Partida.mostrarHistorialBBDD();
+                    case 6:
                         System.out.println(RED + "\nSaliendo del juego...\n" + GREEN);
                         System.exit(0);
-
-                    case 6:
-                        Partida.mostrarHistorialBBDD();
                     default:
-                        System.out.println("Número no válido, introduce 1, 2 o 3");
+                        System.out.println("Número no válido, introduce 1, 2, 3, 4, 5 o 6");
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Sólo se pueden introducir números. Introduce 1 / 2 / 3 / 4");
+                System.out.println("Sólo se pueden introducir números. Introduce 1 / 2 / 3 / 4 / 5 / 6");
             }
         } while (!salidaMenu);
     }
@@ -92,8 +91,9 @@ public class DungeON {
         System.out.println("║ 1) JUGAR                                       ║");
         System.out.println("║ 2) INSTRUCCIONES                               ║");
         System.out.println("║ 3) CRÉDITOS                                    ║");
-        System.out.println("║ 4) MOSTRAR HISTORIAL PARTIDAS                  ║");
-        System.out.println("║ 5) SALIR                                       ║");
+        System.out.println("║ 4) MOSTRAR HISTORIAL FICHERO                   ║");
+        System.out.println("║ 5) MOSTRAR HISTORIAL BASE DE DATOS             ║");
+        System.out.println("║ 6) SALIR                                       ║");
         System.out.println("╚════════════════════════════════════════════════╝");
     }
 
