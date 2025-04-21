@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS Dungeon;
 CREATE DATABASE IF NOT EXISTS Dungeon;
 USE Dungeon;
 
@@ -17,7 +18,11 @@ CREATE TABLE IF NOT EXISTS Partida (
     objetos_usados INT
 );	
 
-INSERT INTO Partida VALUES (
+INSERT INTO Partida (
+    nombre_jugador, clase_personaje, fecha_inicio, hora_fin, duracion, resultado,
+    ultima_sala, enemigos_derrotados, daño_infligido, daño_recibido,
+    habilidades_usadas, objetos_usados
+) VALUES (
     'Partidaprueba', 'HECHICERO', '2025-04-21 15:30:00', '2025-04-21 15:50:00', '00:20:00', 'VICTORIA',
     6, 12, 450, 300,
     5, 4

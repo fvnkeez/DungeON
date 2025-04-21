@@ -111,6 +111,7 @@ public class DungeON {
             iniciarCombate(pj1, partida);
             partida.finalizarPartida(); // Registrar la hora de finalización de la partida
             partida.guardarEnFichero();
+            partida.guardarEnBBDD();
             partida.mostrarEstadisticas();
             historialPartidas.add(partida); // Guardar la partida en el historial
             salirJuego = !preguntarContinuar();

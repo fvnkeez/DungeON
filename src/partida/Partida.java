@@ -2,6 +2,11 @@ package partida;
 
 import java.time.LocalDateTime;
 import java.io.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.time.Duration;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -238,4 +243,38 @@ public class Partida {
             System.out.println("Error al leer el historial de partidas.");
         }
     }
+
+    public void guardarEnBBDD() {
+        String sql = "INSERT INTO partidas (nombre_jugador, clase_personaje, fecha_inicio, hora_fin, duracion, resultado, " +
+                    "ultima_sala, enemigos_derrotados, daño_infligido, daño_recibido, habilidades_usadas, objetos_usados) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        try (Connection conn = bbdd.GestorBD.conectar();
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            Duration duracion = Duration.between(fechaInicio, horaFin);
+            long segundosTotales = duracion.getSeconds();
+            Time duracionSQL = Time.valueOf(String.format("%02d:%02d:%02d", segundosTotales / 3600, (segundosTotales % 3600) / 60, segundosTotales % 60));
+
+            stmt.setString(1, nombreJugador);
+            stmt.setString(2, personaje.getNombre());
+            stmt.setTimestamp(3, Timestamp.valueOf(fechaInicio));
+            stmt.setTimestamp(4, Timestamp.valueOf(horaFin));
+            stmt.setTime(5, duracionSQL);
+            stmt.setString(6, personaje.getSalud() > 0 ? "VICTORIA" : "DERROTA");
+            stmt.setInt(7, ultimaSala);
+            stmt.setInt(8, enemigosDerrotados);
+            stmt.setInt(9, dañoTotalInfligido);
+            stmt.setInt(10, dañoRecibido);
+            stmt.setInt(11, habilidadesUsadas);
+            stmt.setInt(12, objetosUsados);
+
+            stmt.executeUpdate();
+            System.out.println("Partida guardada en la base de datos correctamente.");
+
+        } catch (SQLException e) {
+            System.out.println("Error al guardar la partida en la base de datos: " + e.getMessage());
+        }
+    }
+
 }
