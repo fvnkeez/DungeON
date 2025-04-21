@@ -1,5 +1,8 @@
 # DungeON
 
+![Logo del videojuego](src/resources/logoJuego.png)
+
+
 ## Descripción
 
 DungeON es un videojuego de rol (RPG) por turnos donde los jugadores deben enfrentar enemigos hasta llegar a un jefe final. Los jugadores pueden elegir entre diferentes clases, cada una con sus características únicas, para enfrentarse a los desafíos que el juego ofrece. Este proyecto está desarrollado en Java (JDK 21) y está diseñado para ejecutarse en la terminal.
