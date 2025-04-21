@@ -40,8 +40,13 @@ public class Bomba extends Objeto {
     @Override
     public boolean usar(Personaje pj, Enemigo enemigo) {
         enemigo.setSalud(enemigo.getSalud() - daño);
-        System.out.println("Has lanzado una bomba que inflige " + AZUL + daño + " de daño al enemigo.");
-        System.out.println(GREEN + "Al enemigo le queda: " + RED + enemigo.getSalud() + "/" + enemigo.getSaludMaxima() + GREEN + " de salud." + RESET);
+        System.out.println("Has lanzado una bomba que inflige " + AZUL + daño +  GREEN + " de daño al enemigo.");
+        if (enemigo.getSalud() <= 0) {
+            System.out.println(BY + "Tu bomba fulmina al enemigo." + RESET);
+        } else {
+            System.out.println(GREEN + "Al enemigo le queda: " + RED + enemigo.getSalud() + "/" + enemigo.getSaludMaxima() + GREEN + " de salud." + RESET);
+
+        }
         return true;
     }
 }

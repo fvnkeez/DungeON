@@ -67,6 +67,7 @@ public class DungeON {
                         break;
                     case 5:
                         Partida.mostrarHistorialBBDD();
+                        break;
                     case 6:
                         System.out.println(RED + "\nSaliendo del juego...\n" + GREEN);
                         System.exit(0);
@@ -395,11 +396,13 @@ public class DungeON {
     
         while (!turnoTerminado) {
             switch (eleccion) {
+                // Caso de ataque normal
                 case 1:
                     ejecutarAtaqueJugador(pj1, enemigo, partida);
                     turnoTerminado = true; // Se gastó el turno
                 break;
     
+                // Caso de uso de habilidad
                 case 2:
                     boolean habilidadUsada = pj1.usarHabilidad(enemigo, partida);
                     if (habilidadUsada) {
@@ -411,6 +414,7 @@ public class DungeON {
                     }
                 break;
     
+                // Caso de uso de inventario
                 case 3:
                     if (!pj1.getInventario().estaVacio()) {
                         pj1.getInventario().mostrarInventario();
@@ -428,6 +432,13 @@ public class DungeON {
                         if (usado) {
                             pj1.getInventario().eliminarObjeto(opcion - 1);
                             partida.aumentarObjetosUsados();
+
+                            // Si el enemigo es eliminado por un objeto el turno se acaba
+                            if (enemigo.getSalud() <= 0) {
+                                comprobarFinCombate(enemigo, partida, pj1);
+                                turnoTerminado = true;
+                                break;
+                            }
                         } else {
                             System.out.println(GREEN + "El objeto no se ha consumido." + GREEN);
                         }
