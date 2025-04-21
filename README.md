@@ -8,13 +8,13 @@ DungeON es un videojuego de rol (RPG) por turnos donde los jugadores deben enfre
 
 ## Características
 
-- **Clases disponibles:**
+- **Clases principales disponibles:**
   - **Guerrero:** Salud alta y daño moderado.
   - **Mago:** Salud baja y daño alto con magia.
   - **Ladrón:** Salud moderada y daño equilibrado.
 - **Sistema de combate:**
   - Turnos para atacar y recibir daño.
-  - Diferentes habilidades y objetos para elegir (en desarrollo).
+  - Diferentes habilidades y objetos para elegir.
 - **Instrucciones y Créditos:**
   - Menú interactivo para acceder a las instrucciones del juego y visualizar los créditos del equipo de desarrollo.
 
@@ -28,11 +28,25 @@ DungeON es un videojuego de rol (RPG) por turnos donde los jugadores deben enfre
      - `1`: Jugar.
      - `2`: Ver las instrucciones.
      - `3`: Ver los créditos.
-     - `4`: Mostrar historial partidas.
-     - `5`: Salir del juego.
+     - `4`: Mostrar historial desde fichero.
+     - `5`: Mostrar historial desde base de datos.
+     - `6`: Salir del juego.
 3. **Selección de clase:**
-   - Elige entre Guerrero, Mago o Ladrón.
-   - Cada clase tiene atributos únicos de salud y daño.
+El jugador puede elegir entre tres clases principales, cada una con sus respectivas subclases:
+
+   - **Guerrero**
+   - Bárbaro
+   - Caballero
+
+   - **Mago**
+   - Hechicero
+   - Ocultista
+
+   - **Ladrón**
+   - Fantasma
+   - Pícaro
+
+   Cada subclase tiene habilidades, estadísticas y estilo de juego únicos.
 4. **Combate:**
    - Realiza acciones como atacar al enemigo.
    - Los enemigos contraatacan hasta que uno de los dos quede sin salud.
@@ -81,7 +95,6 @@ DungeON es un videojuego de rol (RPG) por turnos donde los jugadores deben enfre
 
 
 ## Estructura del proyecto
-* Nota: la estructura del proyecto sigue en desarrollo y puede cambiar en futuras versiones.
 
 La estructura del proyecto en Visual Studio Code es la siguiente:
 
@@ -89,28 +102,27 @@ La estructura del proyecto en Visual Studio Code es la siguiente:
 VIDEOJUEGO
 ├── .vscode
 ├── bin
+├── docs
+├── lib
 ├── src
-│   ├── Clases
-│   │   ├── Guerrero
-│   │   │   ├── Guerrero.java
-│   │   │   ├── Caballero.java
-│   │   ├── Ladron
-│   │   │   ├── Ladron.java
-│   │   ├── Mago
-│   │   │   ├── Mago.java
-│   ├── Mensajes
-│   │   ├── Creditos.java
-│   │   ├── Instrucciones.java
-│   │   ├── MensajeBienvenida.java
-│   │   ├── MensajeDerrota.java
-│   ├── Personajes
-│   │   ├── Enemigo.java
-│   │   ├── Personaje.java
-│   ├── Utilidades
-│   │   ├── Utils.java
+│   ├── ansi
+│   ├── bbdd
+│   ├── clases
+│   │   ├── guerrero
+│   │   ├── ladron
+│   │   └──  mago
+│   ├── inventario
+│   ├── mensajes
+│   ├── partida
+│   ├── personajes
+│   ├── resources
+│   ├── utilidades
 │   ├── DungeON.java
-├── DungeON.jar
-└── README.md
+│   ├── DungeON.sql
+├── partidas.txt
+├── README.md
+└── VIDEOJUEGO.jar
+
 
 ```
 
@@ -119,5 +131,5 @@ VIDEOJUEGO
 ## Notas Adicionales
 
 - **Estado del proyecto:**
-  - Algunas funcionalidades como habilidades y objetos están en desarrollo (marcadas como "WIP").
+  - Funcionalidades principales terminadas.
 - **Colaboraciones:** Si tienes sugerencias o deseas contribuir al proyecto, no dudes en contactarnos.
