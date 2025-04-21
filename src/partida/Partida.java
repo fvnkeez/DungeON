@@ -140,6 +140,8 @@ public class Partida {
      */
     public void setPersonaje(Personaje personaje) {
         this.personaje = personaje;
+        // También se puede hacer con getNombre pero quería probar con este método que
+        // elige directamente el nombre de la Clase de Java.
         this.clasePersonaje = personaje.getClass().getSimpleName();
     }
 
