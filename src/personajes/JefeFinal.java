@@ -23,13 +23,14 @@ public class JefeFinal extends Enemigo {
 
     /**
      * Constructor del Jefe Final, llamado "XAL'THŸGOR".
-     * Tiene salud, daño y experiencia personalizados.
+     * Tiene salud y daño personalizados.
      */
     public JefeFinal() {
-        super("XAL'THŸGOR", 1, 20);
+        super("XAL'THŸGOR", 66, 20);
 
         getInventario().agregarObjeto(new Bomba(2, 20), false);
         getInventario().agregarObjeto(new PocionCura(1, 40), false);
+        
     }
 
      /**
