@@ -2,7 +2,7 @@ DROP DATABASE IF EXISTS Dungeon;
 CREATE DATABASE IF NOT EXISTS Dungeon;
 USE Dungeon;
 
-CREATE TABLE IF NOT EXISTS Partida (
+CREATE TABLE IF NOT EXISTS Partidas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre_jugador VARCHAR(50),
 	clase_personaje VARCHAR(30),
@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS Partida (
     objetos_usados INT
 );	
 
-INSERT INTO Partida (
+INSERT INTO Partidas (
     nombre_jugador, clase_personaje, fecha_inicio, hora_fin, duracion, resultado,
     ultima_sala, enemigos_derrotados, daño_infligido, daño_recibido,
     habilidades_usadas, objetos_usados

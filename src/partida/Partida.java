@@ -283,6 +283,7 @@ public class Partida {
 
     public static void mostrarHistorialBBDD() throws SQLException {
         String sql = "SELECT * FROM Partidas";
+        boolean hayDatos = false;
 
         try {
             Connection con = bbdd.ConexionDB.conectar();
@@ -295,9 +296,11 @@ public class Partida {
 
             while (rs.next()) {
 
-                System.out.println(GREEN + "\n┌─────────────────────────────── PARTIDA #" + rs.getInt("id") + " ───────────────────────────────┐");
+                hayDatos = true;
+                System.out.println(GREEN + "\n┌───────────────────────────── PARTIDA #" + rs.getInt("id") + " ───────────────────────────────┐");
 
                 System.out.printf("│ %-20s : %s\n", AZUL + "Jugador" + GREEN, rs.getString("nombre_jugador"));
+                System.out.printf("│ %-20s : %s\n", AZUL + "Clase Personaje" + GREEN, rs.getString("clase_personaje"));
                 System.out.printf("│ %-20s : %s\n", AZUL + "Fecha Inicio" + GREEN, rs.getTimestamp("fecha_inicio"));
                 System.out.printf("│ %-20s : %s\n", AZUL + "Hora Fin" + GREEN, rs.getTimestamp("hora_fin"));
                 System.out.printf("│ %-20s : %s\n", AZUL + "Duración" + GREEN, rs.getTime("duracion"));
@@ -308,11 +311,10 @@ public class Partida {
                 System.out.printf("│ %-20s : %d\n", AZUL + "Daño Recibido" + GREEN, rs.getInt("daño_recibido"));
                 System.out.printf("│ %-20s : %d\n", AZUL + "Habilidades Usadas" + GREEN, rs.getInt("habilidades_usadas"));
                 System.out.printf("│ %-20s : %d\n", AZUL + "Objetos Usados" + GREEN, rs.getInt("objetos_usados"));
-                System.out.printf("│ %-20s : %s\n", AZUL + "Clase Personaje" + GREEN, rs.getString("clase_personaje"));
 
             }
 
-            if (rs.getInt("id") == 0) {
+            if (!hayDatos) {
                 System.out.println("No hay partidas guardadas en la base de datos.");
             }
       
