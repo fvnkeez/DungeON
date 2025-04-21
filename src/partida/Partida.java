@@ -249,7 +249,7 @@ public class Partida {
                     "ultima_sala, enemigos_derrotados, daño_infligido, daño_recibido, habilidades_usadas, objetos_usados) " +
                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        try (Connection conn = bbdd.GestorBD.conectar();
+        try (Connection conn = bbdd.ConexionDB.conectar();
             PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             Duration duracion = Duration.between(fechaInicio, horaFin);

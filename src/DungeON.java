@@ -104,17 +104,17 @@ public class DungeON {
 
         do {
 
-            Personaje pj1 = menuClase();
-            String nombreJugador = Utils.leerCadena("Introduce tu nombre o apodo:");
-            partida.setNombreJugador(nombreJugador);
-            partida.setPersonaje(pj1);
-            iniciarCombate(pj1, partida);
+            Personaje pj1 = menuClase(); // Se asigna la clase dependiendo de la eleccion del jugador
+            String nombreJugador = Utils.leerCadena("Introduce tu nombre o apodo:"); // Pide por consola el nombre del jugador
+            partida.setNombreJugador(nombreJugador); // Hace un set del nombre que ha elegido
+            partida.setPersonaje(pj1); // Set del objeto personaje
+            iniciarCombate(pj1, partida); // Inicia el juego/combate
             partida.finalizarPartida(); // Registrar la hora de finalización de la partida
-            partida.guardarEnFichero();
-            partida.guardarEnBBDD();
-            partida.mostrarEstadisticas();
+            partida.guardarEnFichero(); // Guarda la partida en un fichero txt
+            partida.guardarEnBBDD(); // Guarda la partida en la base de datos
+            partida.mostrarEstadisticas(); // Muestra las estadisticas de la partida que se acaba de jugar
             historialPartidas.add(partida); // Guardar la partida en el historial
-            salirJuego = !preguntarContinuar();
+            salirJuego = !preguntarContinuar(); // Pregunta al jugador si quiere volver a jugar otra vez
 
         } while (!salirJuego);
 
