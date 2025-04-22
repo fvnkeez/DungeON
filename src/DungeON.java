@@ -66,7 +66,7 @@ public class DungeON {
                         Partida.mostrarHistorialDesdeFichero();
                         break;
                     case 5:
-                        Partida.mostrarHistorialBBDD();
+                        Partida.gestionarBBDD();
                         break;
                     case 6:
                         System.out.println(RED + "\nSaliendo del juego...\n" + GREEN);
@@ -93,7 +93,7 @@ public class DungeON {
         System.out.println("║ 2) INSTRUCCIONES                               ║");
         System.out.println("║ 3) CRÉDITOS                                    ║");
         System.out.println("║ 4) MOSTRAR HISTORIAL FICHERO                   ║");
-        System.out.println("║ 5) MOSTRAR HISTORIAL BASE DE DATOS             ║");
+        System.out.println("║ 5) GESTIONAR BASE DE DATOS                     ║");
         System.out.println("║ 6) SALIR                                       ║");
         System.out.println("╚════════════════════════════════════════════════╝");
     }

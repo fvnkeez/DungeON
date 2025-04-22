@@ -13,6 +13,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import personajes.Personaje;
+import utilidades.Utils;
+
 import static ansi.Ansi.*;
 
 /**
@@ -325,8 +327,82 @@ public class Partida {
         }
     }
 
-    public static void actualizarNombre() throws SQLException {
-        
+    public static void actualizarNombre() throws SQLException, IOException {
+        int id = Utils.leerNumero("Introduce el ID de la partida que quieres modificar: ");
+    
+        String nuevoNombre = Utils.leerCadena("Introduce el nuevo nombre del jugador: ");
+    
+        String sql = "UPDATE partidas SET nombre_jugador = ? WHERE id = ?";
+    
+        try (Connection con = bbdd.ConexionDB.conectar();
+             PreparedStatement st = con.prepareStatement(sql)) {
+    
+            st.setString(1, nuevoNombre);
+            st.setInt(2, id);
+    
+            int filasAfectadas = st.executeUpdate();
+            if (filasAfectadas > 0) {
+                System.out.println("Nombre actualizado correctamente.");
+            } else {
+                System.out.println("No se encontró ninguna partida con ese ID.");
+            }
+    
+        } catch (SQLException e) {
+            System.out.println("Error al actualizar el nombre: " + e.getMessage());
+        }
 
+    }
+
+    public static void eliminarPartida() throws SQLException, IOException {
+        int id = Utils.leerNumero("Introduce el ID de la partida que quieres eliminar: ");
+    
+        String sql = "DELETE FROM partidas WHERE id = ?";
+    
+        try (Connection con = bbdd.ConexionDB.conectar();
+             PreparedStatement st = con.prepareStatement(sql)) {
+    
+            st.setInt(1, id);
+    
+            int filasAfectadas = st.executeUpdate();
+            if (filasAfectadas > 0) {
+                System.out.println("Partida eliminada correctamente.");
+            } else {
+                System.out.println("No se encontró ninguna partida con ese ID.");
+            }
+    
+        } catch (SQLException e) {
+            System.out.println("Error al eliminar la partida: " + e.getMessage());
+        }
+    }
+    
+
+    public static void gestionarBBDD() throws IOException, SQLException {
+        boolean volver = false;
+        do {
+            System.out.println(GREEN + "\n╔══════════════════════════════════════════════╗");
+            System.out.println("║          GESTIÓN DE BASE DE DATOS            ║");
+            System.out.println("╠══════════════════════════════════════════════╣");
+            System.out.println("║ 1) Mostrar historial BBDD                    ║");
+            System.out.println("║ 2) Cambiar nombre de jugador                 ║");
+            System.out.println("║ 3) Eliminar una partida                      ║");
+            System.out.println("║ 4) Volver al menú principal                  ║");
+            System.out.println("╚══════════════════════════════════════════════╝");
+            int opcion = Utils.leerNumeroEntre(1, 4);
+    
+            switch (opcion) {
+                case 1:
+                    mostrarHistorialBBDD();
+                    break;
+                case 2:
+                    actualizarNombre();
+                    break;
+                case 3:
+                    eliminarPartida();
+                    break;
+                case 4:
+                    volver = true;
+                    break;
+            }
+        } while (!volver);
     }
 }
