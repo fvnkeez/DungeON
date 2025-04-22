@@ -18,6 +18,8 @@ CREATE TABLE IF NOT EXISTS Partidas (
     objetos_usados INT
 );	
 
+-- Insert de prueba en caso de querer añadir partidas
+/* 
 INSERT INTO Partidas (
     nombre_jugador, clase_personaje, fecha_inicio, hora_fin, duracion, resultado,
     ultima_sala, enemigos_derrotados, daño_infligido, daño_recibido,
@@ -27,3 +29,4 @@ INSERT INTO Partidas (
     6, 12, 450, 300,
     5, 4
 );
+*/

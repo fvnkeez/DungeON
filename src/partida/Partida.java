@@ -283,6 +283,10 @@ public class Partida {
         }
     }
 
+    /**
+     * Muestra todas las partidas de la BBDD
+     * @throws SQLException
+     */
     public static void mostrarHistorialBBDD() throws SQLException {
         String sql = "SELECT * FROM Partidas";
         boolean hayDatos = false;
@@ -327,6 +331,11 @@ public class Partida {
         }
     }
 
+    /**
+     * Actualiza el nombre del jugador según el ID de la partida
+     * @throws SQLException
+     * @throws IOException
+     */
     public static void actualizarNombre() throws SQLException, IOException {
         int id = Utils.leerNumero("Introduce el ID de la partida que quieres modificar: ");
     
@@ -353,6 +362,11 @@ public class Partida {
 
     }
 
+    /**
+     * Elimina una partida por ID
+     * @throws SQLException
+     * @throws IOException
+     */
     public static void eliminarPartida() throws SQLException, IOException {
         int id = Utils.leerNumero("Introduce el ID de la partida que quieres eliminar: ");
     
@@ -376,6 +390,11 @@ public class Partida {
     }
     
 
+    /**
+     * Menú para gestionar todas las opciones de la BBDD
+     * @throws IOException
+     * @throws SQLException
+     */
     public static void gestionarBBDD() throws IOException, SQLException {
         boolean volver = false;
         do {
@@ -392,16 +411,19 @@ public class Partida {
             switch (opcion) {
                 case 1:
                     mostrarHistorialBBDD();
-                    break;
+                break;
+                
                 case 2:
                     actualizarNombre();
-                    break;
+                break;
+
                 case 3:
                     eliminarPartida();
-                    break;
+                break;
+
                 case 4:
                     volver = true;
-                    break;
+                break;
             }
         } while (!volver);
     }
