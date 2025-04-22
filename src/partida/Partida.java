@@ -324,4 +324,9 @@ public class Partida {
             System.out.println("Error " + e.getMessage());
         }
     }
+
+    public static void actualizarNombre() throws SQLException {
+        
+
+    }
 }
