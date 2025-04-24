@@ -1,10 +1,48 @@
-# DungeON
+## DungeON
 
 ![Logo del videojuego](src/resources/logoJuego.png)
 
 ## Descripción
 
 DungeON es un videojuego de rol (RPG) por turnos donde los jugadores deben enfrentar enemigos hasta llegar a un jefe final. Los jugadores pueden elegir entre diferentes clases, cada una con sus características únicas, para enfrentarse a los desafíos que el juego ofrece. Este proyecto está desarrollado en Java (JDK 21) y está diseñado para ejecutarse en la terminal.
+
+## Cómo Clonar el Repositorio
+
+## Método 1: Usando la terminal
+
+1. Abre la terminal (cmd, PowerShell o terminal de VS Code).
+2. Ejecuta el siguiente comando:
+
+```sh
+   git clone https://github.com/fvnkeez/DungeON.git
+```
+
+3. Accede a la carpeta del proyecto:
+
+```sh
+   cd DungeON
+```
+4. Abre el proyecto en Visual Studio Code:
+
+```sh
+   code .
+```
+## Método 2: Usando VSC con interfaz gráfica
+
+1. Abre Visual Studio Code
+
+2. Haz clic en "File" > "Open Folder"
+
+3. En el cuadro de diálogo, navega hasta la ubicación donde quieres clonar el proyecto
+
+4. Haz clic derecho en el área vacía y selecciona "Open in Integrated Terminal"
+
+5. En la terminal que aparece, ejecuta:
+
+```sh
+git clone https://github.com/fvnkeez/DungeON.git
+```
+6. Una vez completada la descarga, haz clic en "File" > "Open Folder" y selecciona la carpeta "DungeON"
 
 ---
 
