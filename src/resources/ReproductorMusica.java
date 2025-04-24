@@ -4,13 +4,21 @@ import javax.sound.sampled.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.BufferedInputStream;
-
-
+/**
+ * FECHA: 24/04/2025
+ * @version 1.8
+ * @author Dani Fuente
+ * Descripción: Programa para el manejo de reproducción de la música.
+ */
 public class ReproductorMusica {
 
     private Clip clip;
     private FloatControl volumen;
 
+    /**
+     * Ruta con el archivo a reproducir
+     * @param rutaRecurso
+     */
     public void reproducirMusica(String rutaRecurso) {
         detenerMusica();
 
@@ -38,6 +46,9 @@ public class ReproductorMusica {
         }
     }
 
+    /**
+     * Detiene la música
+     */
     public void detenerMusica() {
         if (clip != null) {
             fadeOut(); // Suaviza la salida

@@ -1,7 +1,12 @@
 package mensajes;
 import static ansi.Ansi.*;
 
-
+/**
+ * FECHA: 24/04/2025
+ * @version 1.8
+ * @author Dani Fuente
+ * Descripción: Programa para manejar la sala con el jefe final.
+ */
 public class SalaFinal {
 
     public static void mostrarSalaFinal() {

@@ -6,6 +6,11 @@
 
 DungeON es un videojuego de rol (RPG) por turnos donde los jugadores deben enfrentar enemigos hasta llegar a un jefe final. Los jugadores pueden elegir entre diferentes clases, cada una con sus características únicas, para enfrentarse a los desafíos que el juego ofrece. Este proyecto está desarrollado en Java (JDK 21) y está diseñado para ejecutarse en la terminal.
 
+## Enlace .jar
+
+Por límite de archivos de GitHub no se puede subir el .jar
+Aquí está el enlace de Drive: https://drive.google.com/file/d/1tm71_JOBMlm4D6BKMQZYqIyx52BgGwZi/view?usp=sharing
+
 # Cómo Clonar el Repositorio
 
 ## Método 1: Usando la terminal
