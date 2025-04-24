@@ -8,7 +8,7 @@ DungeON es un videojuego de rol (RPG) por turnos donde los jugadores deben enfre
 
 ## Cómo Clonar el Repositorio
 
-## Método 1: Usando la terminal
+# Método 1: Usando la terminal
 
 1. Abre la terminal (cmd, PowerShell o terminal de VS Code).
 2. Ejecuta el siguiente comando:
@@ -27,7 +27,7 @@ DungeON es un videojuego de rol (RPG) por turnos donde los jugadores deben enfre
 ```sh
    code .
 ```
-## Método 2: Usando VSC con interfaz gráfica
+# Método 2: Usando VSC con interfaz gráfica
 
 1. Abre Visual Studio Code
 
