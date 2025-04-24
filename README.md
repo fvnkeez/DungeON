@@ -1,4 +1,4 @@
-## DungeON
+# DungeON
 
 ![Logo del videojuego](src/resources/logoJuego.png)
 
@@ -6,9 +6,9 @@
 
 DungeON es un videojuego de rol (RPG) por turnos donde los jugadores deben enfrentar enemigos hasta llegar a un jefe final. Los jugadores pueden elegir entre diferentes clases, cada una con sus características únicas, para enfrentarse a los desafíos que el juego ofrece. Este proyecto está desarrollado en Java (JDK 21) y está diseñado para ejecutarse en la terminal.
 
-## Cómo Clonar el Repositorio
+# Cómo Clonar el Repositorio
 
-# Método 1: Usando la terminal
+## Método 1: Usando la terminal
 
 1. Abre la terminal (cmd, PowerShell o terminal de VS Code).
 2. Ejecuta el siguiente comando:
@@ -27,7 +27,7 @@ DungeON es un videojuego de rol (RPG) por turnos donde los jugadores deben enfre
 ```sh
    code .
 ```
-# Método 2: Usando VSC con interfaz gráfica
+## Método 2: Usando VSC con interfaz gráfica
 
 1. Abre Visual Studio Code
 
@@ -46,7 +46,7 @@ git clone https://github.com/fvnkeez/DungeON.git
 
 ---
 
-## Características
+# Características
 
 - **Clases principales disponibles:**
   - **Guerrero:** Salud alta y daño moderado.
@@ -60,7 +60,7 @@ git clone https://github.com/fvnkeez/DungeON.git
 
 ---
 
-## Instrucciones
+# Instrucciones
 
 1. **Inicio del juego:** Ejecuta el programa para visualizar la pantalla de bienvenida y el menú principal.
 2. **Menú principal:**
@@ -93,7 +93,7 @@ El jugador puede elegir entre tres clases principales, cada una con sus respecti
 
 ---
 
-## Cómo Ejecutar el Juego
+# Cómo Ejecutar el Juego
 
 
 1. Asegúrate de tener instalado [Java](https://www.java.com/).
@@ -116,7 +116,7 @@ El jugador puede elegir entre tres clases principales, cada una con sus respecti
 
 ---
 
-## Créditos
+# Créditos
 
 **Desarrollo:**
 - Daniel Fuente (Desarrollador principal)
@@ -134,7 +134,7 @@ El jugador puede elegir entre tres clases principales, cada una con sus respecti
 ---
 
 
-## Estructura del proyecto
+# Estructura del proyecto
 
 La estructura del proyecto en Visual Studio Code es la siguiente:
 
@@ -168,7 +168,7 @@ VIDEOJUEGO
 
 ---
 
-## Notas Adicionales
+# Notas Adicionales
 
 - **Estado del proyecto:**
   - Funcionalidades principales terminadas.
