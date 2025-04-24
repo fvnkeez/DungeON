@@ -139,29 +139,63 @@ El jugador puede elegir entre tres clases principales, cada una con sus respecti
 La estructura del proyecto en Visual Studio Code es la siguiente:
 
 ```
-VIDEOJUEGO
+DUNGEON
 ├── .vscode
 ├── bin
 ├── docs
 ├── lib
 ├── src
 │   ├── ansi
+│   │   └── Ansi.java
 │   ├── bbdd
+│   │   └── ConexionDB.java
 │   ├── clases
 │   │   ├── guerrero
+│   │   │   ├── Barbaro.java
+│   │   │   ├── Caballero.java
+│   │   │   └── Guerrero.java
 │   │   ├── ladron
-│   │   └──  mago
+│   │   │   ├── Fantasma.java
+│   │   │   ├── Ladron.java
+│   │   │   └── Picaro.java
+│   │   └── mago
+│   │       ├── Hechicero.java
+│   │       ├── Mago.java
+│   │       └── Ocultista.java
 │   ├── inventario
+│   │   ├── Bomba.java
+│   │   ├── ElixirMana.java
+│   │   ├── EscudoTemporal.java
+│   │   ├── Inventario.java
+│   │   ├── Objeto.java
+│   │   └── PocionCura.java
 │   ├── mensajes
+│   │   ├── Creditos.java
+│   │   ├── Instrucciones.java
+│   │   ├── MensajeBienvenida.java
+│   │   ├── MensajeDerrota.java
+│   │   └── SalaFinal.java
 │   ├── partida
+│   │   └── Partida.java
 │   ├── personajes
+│   │   ├── Enemigo.java
+│   │   ├── Entidad.java
+│   │   ├── JefeFinal.java
+│   │   └── Personaje.java
 │   ├── resources
+│   │   ├── logoJuego.png
+│   │   ├── musicaBossFinal.wav
+│   │   ├── musicaCombate.wav
+│   │   ├── musicaMenu.wav
+│   │   ├── musicaVictoria.wav
+│   │   └── ReproductorMusica.java
 │   ├── utilidades
+│   │   └── Utils.java
 │   ├── DungeON.java
-│   ├── DungeON.sql
+│   └── DungeON.sql
 ├── partidas.txt
 ├── README.md
-└── VIDEOJUEGO.jar
+└── DUNGEON.jar
 
 
 ```
