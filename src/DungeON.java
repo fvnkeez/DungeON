@@ -39,7 +39,7 @@ public class DungeON {
      */
     public static void iniciarJuego() throws IOException, SQLException {
         
-        reproductor.reproducirMusica("/Resources/musicaMenu.wav");
+        reproductor.reproducirMusica("/resources/musicaMenu.wav");
         MensajeBienvenida.mostrarBienvenida();
 
         boolean salidaMenu = false;
@@ -232,7 +232,7 @@ public class DungeON {
      */
     public static void iniciarCombate(Personaje pj1, Partida partida) throws IOException {
         reproductor.detenerMusica();
-        reproductor.reproducirMusica("/Resources/musicaCombate.wav");
+        reproductor.reproducirMusica("/resources/musicaCombate.wav");
         pj1.restaurarSalud();
         pj1.restaurarExp();
         pj1.setNivel(1);
@@ -250,7 +250,7 @@ public class DungeON {
 
             if (sala == 6) {
 
-                reproductor.reproducirMusica("/Resources/musicaBossFinal.wav");
+                reproductor.reproducirMusica("/resources/musicaBossFinal.wav");
                 SalaFinal.mostrarSalaFinal();
                 Enemigo jefeFinal = new JefeFinal();
                 lucharContraJefeFinal(pj1, jefeFinal, partida);
@@ -540,7 +540,7 @@ public class DungeON {
         if (pj1.getSalud() <= 0) {
             MensajeDerrota.mostrarDerrotaFinal();
         } else {
-            reproductor.reproducirMusica("/Resources/musicaVictoria.wav");
+            reproductor.reproducirMusica("/resources/musicaVictoria.wav");
             System.out.println(BY + "\n¡HAS VENCIDO AL JEFE FINAL!" + RESET);
             System.out.println(GREEN + "La oscuridad ha sido derrotada, y la luz vuelve a brillar sobre el reino...");
             System.out.println(BOLD + BY + "\n¡Eres una leyenda, campeón de DungeON!" + RESET);
