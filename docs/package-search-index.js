@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ansi"},{"l":"clases.guerrero"},{"l":"clases.ladron"},{"l":"clases.mago"},{"l":"inventario"},{"l":"mensajes"},{"l":"partida"},{"l":"personajes"},{"l":"resources"},{"l":"utilidades"}];updateSearchResults();
